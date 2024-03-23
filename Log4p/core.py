@@ -1,0 +1,1 @@
+from Log4p.Log4p import LogManager
