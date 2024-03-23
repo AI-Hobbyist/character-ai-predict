@@ -1,6 +1,5 @@
 from Log4p.core import *
 from Getdata import AudioDataset,AudioAugmentation
-import tensorflow as tf
 import torch.nn as nn
 from torch.utils.data import DataLoader
 import torch.optim as optim
@@ -39,9 +38,6 @@ class CNNclassifyModel(nn.Module):
         
         return x
 
-
-
-    
 class Trainer:
     def __init__(self,model:nn.Module, data_loader:DataLoader, batch_size:int, learning_rate:float, num_epochs:int, device:str):
         self.model = model
@@ -49,11 +45,26 @@ class Trainer:
         self.batch_size = batch_size
         self.learning_rate = learning_rate
         self.num_epochs = num_epochs
-        self.device = torch.device(device if torch.cuda.is_available() else "cpu")
+        self.device = torch.device(device=device)
         # 损失函数和优化器不要忘了加
         self.criterion = nn.CrossEntropyLoss()
         self.optimizer = optim.Adam(self.model.parameters(), lr=self.learning_rate)
         self.log = LogManager().GetLogger("TrainThread")
+
+    # 模型准确率
+    def Accuracy(self, model:nn.Module, data_loader:DataLoader, device:torch.device):
+        model.eval()
+        correct = 0
+        total = 0
+        with torch.no_grad():
+            for mfccs, labels in data_loader:
+                mfccs = mfccs.to(device)
+                labels = labels.to(device)
+                outputs = model(mfccs)
+                _, predicted = torch.max(outputs.data, 1)
+                total += labels.size(0)
+                correct += (predicted == labels).sum().item()
+        return 100 * correct / total
 
     # 接下来可以写训练逻辑
     def train(self):
@@ -80,7 +91,10 @@ class Trainer:
 
                     running_loss += loss.item()
 
-                self.log.info(f'步数 {epoch+1}, 损失率: {running_loss/len(self.data_loader)}')
+                #获取准确率
+                accuracy = self.Accuracy(self.model, self.data_loader, self.device)
+                self.log.info(f'步数 {epoch+1}, 准确率: {accuracy}')
+                self.log.info(f'步数 {epoch+1}, 损失率: {running_loss/len(self.data_loader.dataset)}')
 
             self.log.info('训练完成')
         except Exception as e:
@@ -124,6 +138,6 @@ if __name__ == '__main__':
     transform = AudioAugmentation(max_shift=1000,noise_factor=0.05)
     data_loader = DataLoader(AudioDataset(wav_list,label_list,44100,3,transform),batch_size=16,shuffle=True)
     model = CNNclassifyModel(num_classes=60)
-    trainer = Trainer(model=model,data_loader=data_loader,batch_size=10,learning_rate=1e-6,num_epochs=100,device='cuda:0')
-    trainer.train()
+    trainer = Trainer(model=model,data_loader=data_loader,batch_size=10,learning_rate=1e-6,num_epochs=100,device="cuda")
+    trainer.train_continue_with_model('./model/Character.pth')
     trainer.save_model('./model/Character.pth')
