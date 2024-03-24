@@ -1,0 +1,6 @@
+{
+  "model": {
+    "model_steps": 10,
+    "model_device": "cpu"
+  }
+}

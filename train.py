@@ -6,9 +6,10 @@ import torch.nn as nn
 from torch.utils.data import DataLoader
 import torch.optim as optim
 import global_exc_handler
-from rich.progress import track
+from rich.progress import Progress
 import torch,os
 from Decorators import retry
+import json
 
 # 定义CNN游戏角色语音分类模型
 class CNNclassifyModel(nn.Module):
@@ -52,6 +53,8 @@ class Trainer:
         self.criterion = nn.CrossEntropyLoss()
         self.optimizer = optim.Adam(self.model.parameters(), lr=self.learning_rate)
         self.log = LogManager().GetLogger("TrainThread")
+        self.progress = Progress()
+        self.task = self.progress.add_task("[cyan]训练中...", total=self.num_epochs)
 
     # 模型准确率
     def Accuracy(self, model:nn.Module, data_loader:DataLoader, device:torch.device):
@@ -72,13 +75,14 @@ class Trainer:
         return 0
 
     # 接下来可以写训练逻辑
-    def train(self,validate_data:DataLoader,validate_step:int,save_epoth_with_model:int):
+    def train(self,validate_data:DataLoader,validate_step:int,model_path:str,latest_steps:int):
         try:
             self.log.info("开始训练")
             self.model.to(self.device)
             self.model.train()
 
-            for epoch in track(range(self.num_epochs),description="训练中..."):
+            self.progress.start()
+            for epoch in range(self.num_epochs):
                 running_loss = 0.0
                 for inputs, labels in self.data_loader:
                     inputs, labels = inputs.to(self.device), labels.to(self.device)
@@ -101,51 +105,75 @@ class Trainer:
                     self.log.info(f'验证中...')
                     accuracy = self.Accuracy(self.model,data_loader=validate_data,device=self.device)
                     self.log.info(f'准确率: {accuracy}')
-                # 设置多少步后保存一次模型:
-                if (epoch+1) % save_epoth_with_model == 0:
-                    self.log.info(f'保存模型...')
-                    self.save_model(f"{Config.save_model_path}/{Config.model_name}_{epoch+1}.pth")
-                    self.log.info(f'模型已保存,轮数{epoch+1}')
-                self.log.info(f'轮数 {epoch+1}, 损失率: {running_loss/len(self.data_loader.dataset)}')
+                self.progress.update(self.task, completed=latest_steps+epoch+1, total=self.num_epochs,description=f"[cyan]训练中,训练了:{latest_steps+epoch+1}/{self.num_epochs}")
+                self.log.info(f'步数 {latest_steps+epoch+1}, 损失率: {running_loss/len(self.data_loader.dataset)}')
+                # 保存
+                if (epoch+1) % Config.log_interval == 0:
+                    trainer.save_model(model_path,latest_steps+epoch+1)
 
             self.log.info('训练完成')
         except Exception as e:
             self.log.error("训练的时候发生错误")
             raise RuntimeError("训练时发生错误") from e
+        except KeyboardInterrupt:
+            self.log.info("训练被中断")
+            exit()
         
     # 模型肯定要保存，不然白训练了
     @retry(max_attempts=5,delay=1,backoff=2)
-    def save_model(self,model_path:str):
+    def save_model(self,model_path:str,steps:int):
         try:
             self.log.info("保存模型")
-            torch.save(self.model.state_dict(), model_path)
+            save_path = f"./model/{name}/CharacterClassify_{steps}.pth"
+            torch.save(self.model.state_dict(), save_path)
+            js_path = f"./model/{name}/info.json"
+            js_info = {"model":{"model_steps": steps, "model_device": Config.device},}
+            with open(js_path, "w", encoding="utf-8") as f:
+                json.dump(js_info, f, ensure_ascii=False, indent=2)
             self.log.info("模型保存成功")
         except Exception as e:
             self.log.error("保存模型的时候发生错误")
             raise
 
     # 从一个模型继续训练
-    def train_continue_with_model(self,validate_data:DataLoader,validate_step:int,save_epoth_with_model:int, model_path: str):
+    def train_continue_with_model(self, model_path: str):
         try:
-            self.log.info("加载已有模型并继续训练")
+            self.log.info(f"加载已有模型并继续训练，上次模型步数{latest_steps}")
             self.model.load_state_dict(torch.load(model_path))
-            self.train(validate_data=validate_data,validate_step=validate_step,save_epoth_with_model=save_epoth_with_model)
+            self.train(validate_data=validate_data,validate_step=Config.validate_step,model_path=model_path,latest_steps=latest_steps)
         except Exception as e:
             self.log.error("加载模型并继续训练时发生错误")
             raise
+        except KeyboardInterrupt:
+            self.log.info("用户手动停止训练的继续")
 
 if __name__ == '__main__':
+    name = Config.project_name
+    
+    #上次最后模型路径
+    if Config.train_countinue:
+       with open(f"./model/{name}/info.json", "r") as rf:
+           js_data = json.load(rf)
+       latest_steps = js_data.get("model").get("model_steps")
+    else:
+       latest_steps = 0
+    model_path = f"./model/{name}/CharacterClassify_{latest_steps}.pth"
+    
+    
+    #遍历"/datasets/train的文件夹中的文件(文件夹名字是标签),把文件夹名字append到label列表中,把对应文件夹名字里的文件路径append到wav_list中
     getpath = GetDataPath()
-    wav_list ,label_list = getpath.GetPath("train")
-    val_wav , val_label = getpath.GetPath("validate")
+    wav_list ,label_list = getpath.GetPath("train",name)
+    val_wav , val_label = getpath.GetPath("validate",name)
     transform = AudioAugmentation(max_shift=Config.max_shift,noise_factor=Config.noise_factor)
     data_loader = DataLoader(AudioDataset(wav_list,label_list,Config.sr,3,transform),batch_size=Config.batch_size,shuffle=True)
     model = CNNclassifyModel(num_classes=Config.num_classes)
-    trainer = Trainer(model=model,data_loader=data_loader,batch_size=Config.batch_size,learning_rate=Config.learning_rate,num_epochs=Config.num_epochs,device=Config.device)
+    trainer = Trainer(model=model,data_loader=data_loader,batch_size=Config.batch_size,learning_rate=Config.learning_rate,num_epochs=Config.num_steps,device=Config.device)
     validate_data = DataLoader(AudioDataset(val_wav,val_label,Config.sr,3,transform=transform),batch_size=Config.batch_size,shuffle=False)
-    if Config.train_continue:
-        trainer.train_continue_with_model(validate_data=validate_data,validate_step=Config.validate_step,save_epoth_with_model=Config.save_epoth_with_model,model_path=Config.use_model_path)
+    
+    
+    if Config.train_countinue:
+        trainer.train_continue_with_model(model_path)
     else:
-        trainer.train(validate_data=validate_data,validate_step=Config.validate_step,save_epoth_with_model=Config.save_epoth_with_model)
-    trainer.save_model(f"{Config.save_model_path}/{Config.model_name}_main.pth")
+        trainer.train(validate_data=validate_data,validate_step=Config.validate_step,model_path=model_path,latest_steps=latest_steps)
     trainer.log.warning("UserWarning:注意,重新加载模型开始时,不会从上次开始的轮数积累,也就是说模型名称可能会相同,请提前备份好模型,防止被覆盖")
+

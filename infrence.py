@@ -3,12 +3,17 @@ from Getdata import AudioDataset
 from Log4p.core import *
 import torch
 from train import CNNclassifyModel
+import json
+from rich.progress import track
+import argparse
+from glob import glob
+import os
 
 class DetiveDetector:
     def __init__(self, model_path, device):
         self.model = CNNclassifyModel(num_classes=60)
         self.device = torch.device(device)
-        self.model.load_state_dict(torch.load(model_path))
+        self.model.load_state_dict(torch.load(model_path,map_location=torch.device('cpu')))
         self.log = LogManager().GetLogger("DetiveDetector")
 
     def test(self, dataset):
@@ -21,13 +26,54 @@ class DetiveDetector:
         with torch.no_grad():
             output = self.model(mfccs)  # 模型推理
             predicted_class = torch.argmax(output).item()
-            self.log.info(f"Predicted class: {predicted_class}")
+            if infoopt==True:
+            	self.log.info(f"Predicted class: {predicted_class}")
+
+        wr_dict = {audio_file:{"label": predicted_class},}
+
+        if tftf == True:
+            with open(json_opt, "r", encoding="utf-8") as f:
+                old_data = json.load(f)
+            old_data.update(wr_dict)
+
+            with open(json_opt, "w", encoding="utf-8") as f:
+                json.dump(old_data, f, ensure_ascii=False, indent=2)
+        else:
+            with open(json_opt, "w", encoding="utf-8") as f:
+                f.write(json.dumps(wr_dict, ensure_ascii=False, indent=2))
+
+    
 
 # 创建数据集对象
-audio_files = ["kokomi.wav"]
-labels = [0]
-dataset = AudioDataset(audio_files=audio_files, labels=labels, sr=44100, duration=3, transform=None)
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-scr', '--source', type=str, default = None, help='未整理数据集目录', required=True)
+    parser.add_argument('-m', '--model', type=str, default = None, help='模型路径', required=True)
+    parser.add_argument('-opt', '--output', type=str, default = "./opt.json", help='角色信息输出文件（json文件）（默认./opt.json）', required=False)
+    parser.add_argument('-sr', '--sr', type=int, default = '44100', help='待处理数据集采样率（默认44100）', required=False)
+    parser.add_argument('-info', '--info', type=str, default = False, help='是否在控制台输出推理结果（可选False/True，默认False）', required=False)
+    args = parser.parse_args()
 
-# 创建检测器对象并进行测试
-dev = DetiveDetector("model/Character.pth", "cpu")
-dev.test(dataset)
+    audio_path=args.source
+    model_path=args.model
+    json_opt=args.output
+    ausr=args.sr
+    infoopt=args.info
+
+    tftf=False
+
+    files = glob(os.path.join(audio_path, "*.wav"))
+    labels = [0]
+    # 递归文件
+    for audio in track(files):
+        file = str(audio)
+        audio_file = os.path.basename(file)
+        atdl=[f"{audio_path}/{audio_file}"]
+        
+        dataset = AudioDataset(audio_files=atdl, labels=labels, sr=ausr, duration=3, transform=None)
+
+        # 创建检测器对象并进行测试
+        device = 'cuda' if torch.cuda.is_available () else 'cpu'
+        dev = DetiveDetector(model_path, device)
+        dev.test(dataset)
+        tftf=True
