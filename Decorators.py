@@ -6,7 +6,7 @@ from functools import wraps
 def retry(max_attempts=3, delay=1, backoff=2):
     '''
     # retry装饰器
-    ## 在函数发生异常的时候,受到retry装饰的函数会尝试直到被装饰的函数成功运行或者达到最大尝试次数
+    ### 在函数发生异常的时候,受到retry装饰的函数会尝试直到被装饰的函数成功运行或者达到最大尝试次数
     - max_attempts: 指定最大尝试次数
     - delay: 尝试延迟
     - backoff : 不知道

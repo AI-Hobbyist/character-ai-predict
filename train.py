@@ -1,5 +1,7 @@
 from Log4p.core import *
+from config import Config
 from Getdata import AudioDataset,AudioAugmentation
+from GetPath import GetDataPath
 import torch.nn as nn
 from torch.utils.data import DataLoader
 import torch.optim as optim
@@ -64,10 +66,13 @@ class Trainer:
                 _, predicted = torch.max(outputs.data, 1)
                 total += labels.size(0)
                 correct += (predicted == labels).sum().item()
-        return 100 * correct / total
+        if total != 0:
+           result = correct / total
+           return result
+        return 0
 
     # 接下来可以写训练逻辑
-    def train(self):
+    def train(self,validate_data:DataLoader,validate_step:int,save_epoth_with_model:int):
         try:
             self.log.info("开始训练")
             self.model.to(self.device)
@@ -91,10 +96,17 @@ class Trainer:
 
                     running_loss += loss.item()
 
-                #获取准确率
-                accuracy = self.Accuracy(self.model, self.data_loader, self.device)
-                self.log.info(f'步数 {epoch+1}, 准确率: {accuracy}')
-                self.log.info(f'步数 {epoch+1}, 损失率: {running_loss/len(self.data_loader.dataset)}')
+                # validate_step代表多少步验证一次
+                if (epoch+1) % validate_step == 0:
+                    self.log.info(f'验证中...')
+                    accuracy = self.Accuracy(self.model,data_loader=validate_data,device=self.device)
+                    self.log.info(f'准确率: {accuracy}')
+                # 设置多少步后保存一次模型:
+                if (epoch+1) % save_epoth_with_model == 0:
+                    self.log.info(f'保存模型...')
+                    self.save_model(f"{Config.save_model_path}/{Config.model_name}_{epoch+1}.pth")
+                    self.log.info(f'模型已保存,轮数{epoch+1}')
+                self.log.info(f'轮数 {epoch+1}, 损失率: {running_loss/len(self.data_loader.dataset)}')
 
             self.log.info('训练完成')
         except Exception as e:
@@ -113,31 +125,27 @@ class Trainer:
             raise
 
     # 从一个模型继续训练
-    def train_continue_with_model(self, model_path: str):
+    def train_continue_with_model(self,validate_data:DataLoader,validate_step:int,save_epoth_with_model:int, model_path: str):
         try:
             self.log.info("加载已有模型并继续训练")
             self.model.load_state_dict(torch.load(model_path))
-            self.train()
+            self.train(validate_data=validate_data,validate_step=validate_step,save_epoth_with_model=save_epoth_with_model)
         except Exception as e:
             self.log.error("加载模型并继续训练时发生错误")
             raise
 
 if __name__ == '__main__':
-    #遍历"/datasets/train的文件夹中的文件(文件夹名字是标签),把文件夹名字append到label列表中,把对应文件夹名字里的文件路径append到wav_list中
-    wav_list = []
-    label_list = []
-    dataset_path = "datasets/train"
-    for root, dirs, files in os.walk(dataset_path):
-        for label in dirs:
-            label_path = os.path.join(root, label)
-            for wav_file in os.listdir(label_path):
-                wav_path = os.path.join(label_path, wav_file)
-                wav_list.append(wav_path)
-                label_list.append(int(label))
-
-    transform = AudioAugmentation(max_shift=1000,noise_factor=0.05)
-    data_loader = DataLoader(AudioDataset(wav_list,label_list,44100,3,transform),batch_size=16,shuffle=True)
-    model = CNNclassifyModel(num_classes=60)
-    trainer = Trainer(model=model,data_loader=data_loader,batch_size=10,learning_rate=1e-6,num_epochs=100,device="cuda")
-    trainer.train_continue_with_model('./model/Character.pth')
-    trainer.save_model('./model/Character.pth')
+    getpath = GetDataPath()
+    wav_list ,label_list = getpath.GetPath("train")
+    val_wav , val_label = getpath.GetPath("validate")
+    transform = AudioAugmentation(max_shift=Config.max_shift,noise_factor=Config.noise_factor)
+    data_loader = DataLoader(AudioDataset(wav_list,label_list,Config.sr,3,transform),batch_size=Config.batch_size,shuffle=True)
+    model = CNNclassifyModel(num_classes=Config.num_classes)
+    trainer = Trainer(model=model,data_loader=data_loader,batch_size=Config.batch_size,learning_rate=Config.learning_rate,num_epochs=Config.num_epochs,device=Config.device)
+    validate_data = DataLoader(AudioDataset(val_wav,val_label,Config.sr,3,transform=transform),batch_size=Config.batch_size,shuffle=False)
+    if Config.train_continue:
+        trainer.train_continue_with_model(validate_data=validate_data,validate_step=Config.validate_step,save_epoth_with_model=Config.save_epoth_with_model,model_path=Config.use_model_path)
+    else:
+        trainer.train(validate_data=validate_data,validate_step=Config.validate_step,save_epoth_with_model=Config.save_epoth_with_model)
+    trainer.save_model(f"{Config.save_model_path}/{Config.model_name}_main.pth")
+    trainer.log.warning("UserWarning:注意,重新加载模型开始时,不会从上次开始的轮数积累,也就是说模型名称可能会相同,请提前备份好模型,防止被覆盖")

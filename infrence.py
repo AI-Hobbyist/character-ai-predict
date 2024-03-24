@@ -29,5 +29,5 @@ labels = [0]
 dataset = AudioDataset(audio_files=audio_files, labels=labels, sr=44100, duration=3, transform=None)
 
 # 创建检测器对象并进行测试
-dev = DetiveDetector("model/classifyFurinaCharacter.pth", "cpu")
+dev = DetiveDetector("model/Character.pth", "cpu")
 dev.test(dataset)

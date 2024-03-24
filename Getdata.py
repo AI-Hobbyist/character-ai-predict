@@ -56,7 +56,10 @@ class AudioDataset(Dataset):
                 self.first_shape = mfccs.shape[1]
             
             if mfccs.shape[1] != self.first_shape:
-                mfccs = np.pad(mfccs, ((0, 0), (0, self.first_shape - mfccs.shape[1])), mode='constant')
+                try:
+                   mfccs = np.pad(mfccs, ((0, 0), (0, self.first_shape - mfccs.shape[1])), mode='constant')
+                except Exception as e:
+                    self.log.warning(f"(数据维度警告)填充零值错误: {mfccs.shape}")
 
             if self.transform:
                 waveform = self.transform(waveform)  # 应用额外的转换操作
@@ -68,3 +71,4 @@ class AudioDataset(Dataset):
         except IndexError as e:
             self.log.error(f"音频文件数量和标签数量不匹配!")
             raise
+
