@@ -1,0 +1,58 @@
+[18:41:34][MainThread/CRITICAL][exception_hook]:发生异常:
+An Error has occurred: RuntimeError: 训练时发生错误
+Traceback (most recent call last):
+  at <module> in (f:\python_play\Genshin-analsts\train.py:176)
+  at train in (f:\python_play\Genshin-analsts\train.py:117)
+failure because of: RuntimeError: stack expects each tensor to be equal size, but got [13, 214] at entry 0 and [13, 259] at entry 1
+  at train in (f:\python_play\Genshin-analsts\train.py:87)
+  at __next__ in (G:\python3.12.2\Lib\site-packages\torch\utils\data\dataloader.py:631)
+  at _next_data in (G:\python3.12.2\Lib\site-packages\torch\utils\data\dataloader.py:675)
+  at fetch in (G:\python3.12.2\Lib\site-packages\torch\utils\data\_utils\fetch.py:54)
+  at default_collate in (G:\python3.12.2\Lib\site-packages\torch\utils\data\_utils\collate.py:277)
+  at collate in (G:\python3.12.2\Lib\site-packages\torch\utils\data\_utils\collate.py:144)
+  at collate in (G:\python3.12.2\Lib\site-packages\torch\utils\data\_utils\collate.py:121)
+  at collate_tensor_fn in (G:\python3.12.2\Lib\site-packages\torch\utils\data\_utils\collate.py:174)
+
+[19:45:56][MainThread/CRITICAL][exception_hook]:发生异常:
+An Error has occurred: RuntimeError: 训练时发生错误
+Traceback (most recent call last):
+  at <module> in (f:\python_play\Genshin-analsts\train.py:190)
+  at train in (f:\python_play\Genshin-analsts\train.py:130)
+failure because of: RuntimeError: stack expects each tensor to be equal size, but got [13, 67] at entry 0 and [13, 259] at entry 1
+  at train in (f:\python_play\Genshin-analsts\train.py:95)
+  at __next__ in (G:\python3.12.2\Lib\site-packages\torch\utils\data\dataloader.py:631)
+  at _next_data in (G:\python3.12.2\Lib\site-packages\torch\utils\data\dataloader.py:675)
+  at fetch in (G:\python3.12.2\Lib\site-packages\torch\utils\data\_utils\fetch.py:54)
+  at default_collate in (G:\python3.12.2\Lib\site-packages\torch\utils\data\_utils\collate.py:277)
+  at collate in (G:\python3.12.2\Lib\site-packages\torch\utils\data\_utils\collate.py:144)
+  at collate in (G:\python3.12.2\Lib\site-packages\torch\utils\data\_utils\collate.py:121)
+  at collate_tensor_fn in (G:\python3.12.2\Lib\site-packages\torch\utils\data\_utils\collate.py:174)
+
+[20:20:20][MainThread/CRITICAL][exception_hook]:发生异常:
+An Error has occurred: AssertionError: 音频文件数量和标签数量不匹配
+Traceback (most recent call last):
+  at <module> in (F:\python_play\Genshin-analsts\infrence.py:78)
+  at test in (F:\python_play\Genshin-analsts\infrence.py:23)
+  at __getitem__ in (F:\python_play\Genshin-analsts\Getdata.py:46)
+
+[20:34:27][MainThread/CRITICAL][exception_hook]:发生异常:
+An Error has occurred: AssertionError: 音频文件数量和标签数量不匹配
+Traceback (most recent call last):
+  at <module> in (F:\python_play\Genshin-analsts\infrence.py:78)
+  at test in (F:\python_play\Genshin-analsts\infrence.py:23)
+  at __getitem__ in (F:\python_play\Genshin-analsts\Getdata.py:46)
+
+[20:35:27][MainThread/CRITICAL][exception_hook]:发生异常:
+An Error has occurred: AssertionError: 音频文件数量和标签数量不匹配
+Traceback (most recent call last):
+  at <module> in (F:\python_play\Genshin-analsts\infrence.py:78)
+  at test in (F:\python_play\Genshin-analsts\infrence.py:23)
+  at __getitem__ in (F:\python_play\Genshin-analsts\Getdata.py:46)
+
+[20:36:18][MainThread/CRITICAL][exception_hook]:发生异常:
+An Error has occurred: AssertionError: 音频文件数量和标签数量不匹配
+Traceback (most recent call last):
+  at <module> in (F:\python_play\Genshin-analsts\infrence.py:79)
+  at test in (F:\python_play\Genshin-analsts\infrence.py:23)
+  at __getitem__ in (F:\python_play\Genshin-analsts\Getdata.py:46)
+

@@ -1,13 +1,14 @@
 import torch
 from Getdata import AudioDataset
 from Log4p.core import *
-import torch
+import torch,psutil
+from character import character
 from train import CNNclassifyModel
 import json
 from rich.progress import track
 import argparse
 from glob import glob
-import os
+import os,gc
 
 class DetiveDetector:
     def __init__(self, model_path, device):
@@ -29,7 +30,7 @@ class DetiveDetector:
             if infoopt==True:
             	self.log.info(f"Predicted class: {predicted_class}")
 
-        wr_dict = {audio_file:{"label": predicted_class},}
+        wr_dict = {audio_file:{"label": character[f"{predicted_class}"]},}
 
         if tftf == True:
             with open(json_opt, "r", encoding="utf-8") as f:
@@ -65,15 +66,21 @@ if __name__ == "__main__":
     files = glob(os.path.join(audio_path, "*.wav"))
     labels = [0]
     # 递归文件
-    for audio in track(files):
+    # 在循环外部创建 DetiveDetector 对象
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    dev = DetiveDetector(model_path, device)
+
+    # 循环中重复使用 dev
+    for audio in track(files,description="[cyan]分类推理中..."):
         file = str(audio)
         audio_file = os.path.basename(file)
         atdl=[f"{audio_path}/{audio_file}"]
-        
         dataset = AudioDataset(audio_files=atdl, labels=labels, sr=ausr, duration=3, transform=None)
-
-        # 创建检测器对象并进行测试
-        device = 'cuda' if torch.cuda.is_available () else 'cpu'
-        dev = DetiveDetector(model_path, device)
         dev.test(dataset)
         tftf=True
+        memory_useage = psutil.virtual_memory().used / (1024.0 ** 3)
+        if memory_useage > 7:
+            gc.collect()
+    # 循环结束后手动释放资源
+    del dev
+    gc.collect()

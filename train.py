@@ -13,7 +13,7 @@ import json
 
 # 定义CNN游戏角色语音分类模型
 class CNNclassifyModel(nn.Module):
-    def __init__(self, num_classes):
+    def __init__(self, num_classes, reg_lambda=0.01):
         super(CNNclassifyModel, self).__init__()
         
         self.conv1 = nn.Conv2d(in_channels=1, out_channels=16, kernel_size=(3, 3))
@@ -24,22 +24,30 @@ class CNNclassifyModel(nn.Module):
         self.relu2 = nn.ReLU()
         self.pool2 = nn.MaxPool2d(kernel_size=(2, 2))
         
-        self.adapt_pool = nn.AdaptiveAvgPool2d((5, 5))  # 使用自适应池化层替代固定大小的全连接层
+        self.adapt_pool = nn.AdaptiveAvgPool2d((5, 5))
         
-        self.fc1 = nn.Linear(32 * 5 * 5, 128)  # 输入大小根据自适应池化层输出的大小确定
+        self.fc1 = nn.Linear(32 * 5 * 5, 128)
         self.relu3 = nn.ReLU()
         self.fc2 = nn.Linear(128, num_classes)
         
+        self.reg_lambda = reg_lambda
+
     def forward(self, x):
         x = x.unsqueeze(1)
         x = self.pool1(self.relu1(self.conv1(x)))
         x = self.pool2(self.relu2(self.conv2(x)))
-        x = self.adapt_pool(x)  # 使用自适应池化层
+        x = self.adapt_pool(x)
         x = x.view(-1, 32 * 5 * 5)
         x = self.relu3(self.fc1(x))
         x = self.fc2(x)
         
         return x
+
+    def l2_regularization_loss(self):
+        l2_reg = torch.tensor(0., device=self.fc2.weight.device)
+        for param in self.parameters():
+            l2_reg += torch.norm(param, p=2)
+        return self.reg_lambda * l2_reg
 
 class Trainer:
     def __init__(self,model:nn.Module, data_loader:DataLoader, batch_size:int, learning_rate:float, num_epochs:int, device:str):
@@ -71,18 +79,18 @@ class Trainer:
                 correct += (predicted == labels).sum().item()
         if total != 0:
            result = correct / total
-           return result
-        return 0
+           return result * 100
+        raise ValueError("数据集为空集")
 
     # 接下来可以写训练逻辑
-    def train(self,validate_data:DataLoader,validate_step:int,model_path:str,latest_steps:int):
+    def train(self, validate_data: DataLoader, validate_step: int, model_path: str, latest_steps: int):
         try:
             self.log.info("开始训练")
             self.model.to(self.device)
             self.model.train()
 
             self.progress.start()
-            for epoch in range(self.num_epochs):
+            for epoch in range(self.num_epochs - latest_steps):
                 running_loss = 0.0
                 for inputs, labels in self.data_loader:
                     inputs, labels = inputs.to(self.device), labels.to(self.device)
@@ -94,6 +102,10 @@ class Trainer:
                     outputs = self.model(inputs)
                     loss = self.criterion(outputs, labels)
 
+                    # 添加L2正则化损失
+                    l2_reg_loss = self.model.l2_regularization_loss()
+                    loss += l2_reg_loss
+
                     # 反向传播和优化
                     loss.backward()
                     self.optimizer.step()
@@ -101,15 +113,16 @@ class Trainer:
                     running_loss += loss.item()
 
                 # validate_step代表多少步验证一次
-                if (epoch+1) % validate_step == 0:
+                if (epoch + 1) % validate_step == 0:
                     self.log.info(f'验证中...')
-                    accuracy = self.Accuracy(self.model,data_loader=validate_data,device=self.device)
-                    self.log.info(f'准确率: {accuracy}')
-                self.progress.update(self.task, completed=latest_steps+epoch+1, total=self.num_epochs,description=f"[cyan]训练中,训练了:{latest_steps+epoch+1}/{self.num_epochs}")
-                self.log.info(f'步数 {latest_steps+epoch+1}, 损失率: {running_loss/len(self.data_loader.dataset)}')
+                    accuracy = self.Accuracy(self.model, data_loader=validate_data, device=self.device)
+                    self.log.info(f'准确率: {accuracy}%')
+                self.progress.update(self.task, completed=latest_steps + epoch + 1, total=self.num_epochs,
+                                    description=f"[cyan]训练中,训练了:{latest_steps + epoch + 1}/{self.num_epochs}")
+                self.log.info(f'步数 {latest_steps + epoch + 1}, 损失率: {running_loss / len(self.data_loader.dataset)}')
                 # 保存
-                if (epoch+1) % Config.log_interval == 0:
-                    trainer.save_model(model_path,latest_steps+epoch+1)
+                if (epoch + 1) % Config.log_interval == 0:
+                    trainer.save_model(model_path, latest_steps + epoch + 1)
 
             self.log.info('训练完成')
         except Exception as e:
@@ -118,6 +131,7 @@ class Trainer:
         except KeyboardInterrupt:
             self.log.info("训练被中断")
             exit()
+
         
     # 模型肯定要保存，不然白训练了
     @retry(max_attempts=5,delay=1,backoff=2)
@@ -159,21 +173,20 @@ if __name__ == '__main__':
        latest_steps = 0
     model_path = f"./model/{name}/CharacterClassify_{latest_steps}.pth"
     
-    
-    #遍历"/datasets/train的文件夹中的文件(文件夹名字是标签),把文件夹名字append到label列表中,把对应文件夹名字里的文件路径append到wav_list中
+
     getpath = GetDataPath()
     wav_list ,label_list = getpath.GetPath("train",name)
     val_wav , val_label = getpath.GetPath("validate",name)
-    transform = AudioAugmentation(max_shift=Config.max_shift,noise_factor=Config.noise_factor)
-    data_loader = DataLoader(AudioDataset(wav_list,label_list,Config.sr,3,transform),batch_size=Config.batch_size,shuffle=True)
-    model = CNNclassifyModel(num_classes=Config.num_classes)
-    trainer = Trainer(model=model,data_loader=data_loader,batch_size=Config.batch_size,learning_rate=Config.learning_rate,num_epochs=Config.num_steps,device=Config.device)
-    validate_data = DataLoader(AudioDataset(val_wav,val_label,Config.sr,3,transform=transform),batch_size=Config.batch_size,shuffle=False)
+    conf = Config("train")
+    transform = AudioAugmentation(max_shift=conf.max_shift,noise_factor=conf.noise_factor)
+    data_loader = DataLoader(AudioDataset(wav_list,label_list,conf.sr,3,transform),batch_size=conf.batch_size,shuffle=True)
+    model = CNNclassifyModel(num_classes=conf.num_classes)
+    trainer = Trainer(model=model,data_loader=data_loader,batch_size=conf.batch_size,learning_rate=conf.learning_rate,num_epochs=conf.num_epochs,device=conf.device)
+    validate_data = DataLoader(AudioDataset(val_wav,val_label,conf.sr,3,transform=transform),batch_size=conf.batch_size,shuffle=False)
     
     
-    if Config.train_countinue:
+    if conf.train_countinue:
         trainer.train_continue_with_model(model_path)
     else:
-        trainer.train(validate_data=validate_data,validate_step=Config.validate_step,model_path=model_path,latest_steps=latest_steps)
-    trainer.log.warning("UserWarning:注意,重新加载模型开始时,不会从上次开始的轮数积累,也就是说模型名称可能会相同,请提前备份好模型,防止被覆盖")
+        trainer.train(validate_data=validate_data,validate_step=conf.validate_step,model_path=model_path,latest_steps=0)
 
