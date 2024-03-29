@@ -1,15 +1,21 @@
 import os
+from Log4p.core import *
 
 
 
 class GetDataPath:
     def __init__(self):
+        self.log = LogManager().GetLogger("GetDataPath")
         pass
 
     def GetPath(self, base_name: str, name: str) -> tuple[list, list]:
         wav_list = []
         label_list = []
         dataset_path = f"datasets/{name}/{base_name}"
+        #检测文件夹datasets/name存不存在,如果不存在,则创建一个
+        if not os.path.exists(f"datasets/{name}"):
+            self.log.warning(f"文件夹 datasets/{name} 不存在,自动创建")
+            os.makedirs(f"datasets/{name}",exist_ok=True)
         
         class_data = {}  # 使用字典来存储每个类别的数据
         min_data_count = float('inf')  # 记录最小数据集的样本数量
