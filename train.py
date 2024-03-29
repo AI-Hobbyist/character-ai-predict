@@ -162,7 +162,7 @@ class Trainer:
             self.log.info("用户手动停止训练的继续")
 
 if __name__ == '__main__':
-    name = Config.project_name
+    name = "全角色"
     
     #上次最后模型路径
     if Config.train_countinue:
@@ -177,7 +177,7 @@ if __name__ == '__main__':
     getpath = GetDataPath()
     wav_list ,label_list = getpath.GetPath("train",name)
     val_wav , val_label = getpath.GetPath("validate",name)
-    conf = Config("train")
+    conf = Config(name,"train")
     transform = AudioAugmentation(max_shift=conf.max_shift,noise_factor=conf.noise_factor)
     data_loader = DataLoader(AudioDataset(wav_list,label_list,conf.sr,3,transform),batch_size=conf.batch_size,shuffle=True)
     model = CNNclassifyModel(num_classes=conf.num_classes)

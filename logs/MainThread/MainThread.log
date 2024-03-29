@@ -56,3 +56,8 @@ Traceback (most recent call last):
   at test in (F:\python_play\Genshin-analsts\infrence.py:23)
   at __getitem__ in (F:\python_play\Genshin-analsts\Getdata.py:46)
 
+[13:12:29][MainThread/CRITICAL][exception_hook]:发生异常:
+An Fatal Error has occurred: FileNotFoundError: [Errno 2] No such file or directory: './model/全角色/info.json'
+Traceback (most recent call last):
+  at <module> in (F:\python_play\Genshin-analsts\train.py:169)
+

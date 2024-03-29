@@ -10,7 +10,7 @@ def format_stack_trace(exctype, value, tb, nested=False):
     if nested:
         exception_info = f"{exctype.__name__}: {value}\n"
     else:
-        exception_info = f"An Error has occurred: {exctype.__name__}: {value}\n"
+        exception_info = f"An Fatal Error has occurred: {exctype.__name__}: {value}\n"
         exception_info += "Traceback (most recent call last):\n"
 
     for filename, lineno, funcname, line in tb_list:

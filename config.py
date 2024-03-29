@@ -1,13 +1,13 @@
 import yaml
 
 class Config:
-    def __init__(self,base_name:str) -> None:
-        self.yaml_conf = self.load_yaml(base_name=base_name)
+    def __init__(self,projectname:str = None,base_name:str = None) -> None:
+        self.yaml_conf = self.load_yaml(projectname=projectname,base_name=base_name)
 
-    def load_yaml(self,base_name:str):
-        with open("config.yaml", "r", encoding="utf-8") as f:
+    def load_yaml(self,projectname:str = None,base_name:str = None):
+        with open(f"model/{projectname}/config.yaml", "r", encoding="utf-8") as f:
             conf = yaml.safe_load(f)
-        return conf[base_name]
+        return conf[base_name if base_name else None]
     
     @property
     def validate_step(self) -> int:
@@ -32,10 +32,6 @@ class Config:
     @property
     def num_classes(self) -> int:
         return self.yaml_conf['num_classes']
-    
-    @property
-    def project_name(self) -> str:
-        return self.yaml_conf['project_name']
     
     @property
     def sr(self) -> int:

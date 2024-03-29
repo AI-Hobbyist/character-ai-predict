@@ -19,7 +19,7 @@ current_yml=None
 def get_status():
     global current_yml
     try:
-        cfg = yaml.load(open('config.yml'),Loader=yaml.FullLoader)
+        cfg = yaml.load(open('config.yml',encoding="utf-8"),Loader=yaml.FullLoader)
         current_yml='当前的训练： '+os.path.basename(cfg["project_name"])+"\n\n以下是配置文件内容：\n\n"
         with open('config.yml', mode="r", encoding="utf-8", errors='ignore') as f:
             current_y=f.read()
@@ -114,11 +114,11 @@ def a4b_train_cont(project_name):
      command = f"{py_dir} train.py -n {project_name}"
      cfg_path=os.path.join('model',project_name,'config.yml')   
      
-     configjson = yaml.load(open(cfg_path), Loader=yaml.FullLoader)
+     configjson = yaml.load(open(cfg_path,encoding="utf-8"), Loader=yaml.FullLoader)
      if configjson["train"]["train_countinue"]==False:
          configjson["train"]["train_countinue"]=True
          print("已经修改配置文件！\n")
-     configyml = yaml.load(open("config.yml"),Loader=yaml.FullLoader)
+     configyml = yaml.load(open("config.yml",encoding="utf-8"),Loader=yaml.FullLoader)
      configyml["train"]["train_countinue"]=configjson["train"]["train_countinue"]
      subprocess.Popen(['start', 'cmd', '/k', command],cwd=current_directory,shell=True)
      print(command+'\n\n')
