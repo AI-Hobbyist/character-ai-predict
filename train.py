@@ -163,9 +163,9 @@ class Trainer:
 
 if __name__ == '__main__':
     name = "全角色"
-    
+    conf = Config(name,"train")
     #上次最后模型路径
-    if Config.train_countinue:
+    if conf.train_countinue:
        with open(f"./model/{name}/info.json", "r") as rf:
            js_data = json.load(rf)
        latest_steps = js_data.get("model").get("model_steps")
@@ -177,7 +177,6 @@ if __name__ == '__main__':
     getpath = GetDataPath()
     wav_list ,label_list = getpath.GetPath("train",name)
     val_wav , val_label = getpath.GetPath("validate",name)
-    conf = Config(name,"train")
     transform = AudioAugmentation(max_shift=conf.max_shift,noise_factor=conf.noise_factor)
     data_loader = DataLoader(AudioDataset(wav_list,label_list,conf.sr,3,transform),batch_size=conf.batch_size,shuffle=True)
     model = CNNclassifyModel(num_classes=conf.num_classes)
