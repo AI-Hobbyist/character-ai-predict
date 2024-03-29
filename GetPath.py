@@ -9,8 +9,6 @@ class GetDataPath:
         pass
 
     def GetPath(self, base_name: str, name: str) -> tuple[list, list]:
-        wav_list = []
-        label_list = []
         dataset_path = f"datasets/{name}/{base_name}"
         #检测文件夹datasets/name存不存在,如果不存在,则创建一个
         if not os.path.exists(f"datasets/{name}"):

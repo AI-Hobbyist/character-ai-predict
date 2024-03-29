@@ -85,8 +85,8 @@ class Trainer:
     # 接下来可以写训练逻辑
     def train(self, validate_data: DataLoader, validate_step: int, model_path: str, latest_steps: int):
         try:
-            total_gpu_memory = torch.cuda.get_device_properties(self.device).total_memory / (1024.0 ** 3)
             if self.device.type == "cuda":
+                total_gpu_memory = torch.cuda.get_device_properties(self.device).total_memory / (1024.0 ** 3)
                 self.log.info(f"GPU总显存：{total_gpu_memory} GB")
             
             self.log.info("开始训练")
@@ -117,10 +117,12 @@ class Trainer:
                     running_loss += loss.item()
                 
                 # 显存不足的时候发出告警
-                warning_threshold = total_gpu_memory * 0.8
-                allocated_gpu_memory_gb = torch.cuda.memory_allocated(self.device) / (1024 ** 3)
-                if allocated_gpu_memory_gb > warning_threshold:
-                    self.log.warning(f"显存占用超过 {warning_threshold} GB，请注意释放显存")
+                if self.device.type == "cuda":
+                    total_gpu_memory = torch.cuda.get_device_properties(self.device).total_memory / (1024.0 ** 3)
+                    warning_threshold = total_gpu_memory * 0.8
+                    allocated_gpu_memory_gb = torch.cuda.memory_allocated(self.device) / (1024 ** 3)
+                    if allocated_gpu_memory_gb > warning_threshold:
+                        self.log.warning(f"显存占用超过 {warning_threshold} GB，请注意释放显存")
 
                 # validate_step代表多少步验证一次
                 if (epoch + 1) % validate_step == 0:
@@ -129,7 +131,7 @@ class Trainer:
                     self.log.info(f'准确率: {accuracy}%')
                 self.progress.update(self.task, completed=latest_steps + epoch + 1, total=self.num_epochs,
                                     description=f"[cyan]训练中,训练了:{latest_steps + epoch + 1}/{self.num_epochs}")
-                self.log.info(f'步数 {latest_steps + epoch + 1}, 损失率: {running_loss / len(self.data_loader.dataset)}') # type: ignore
+                self.log.info(f'轮数 {latest_steps + epoch + 1}, 损失率: {running_loss / len(self.data_loader.dataset)}') # type: ignore
                 # 保存
                 if (epoch + 1) % conf.log_interval == 0:
                     trainer.save_model(model_path, latest_steps + epoch + 1)
@@ -151,7 +153,7 @@ class Trainer:
             save_path = f"./model/{name}/CharacterClassify_{steps}.pth"
             torch.save(self.model.state_dict(), save_path)
             js_path = f"./model/{name}/info.json"
-            js_info = {"model":{"model_steps": steps, "model_device": Config.device},}
+            js_info = {"model":{"model_steps": steps, "model_device": conf.device},}
             with open(js_path, "w", encoding="utf-8") as f:
                 json.dump(js_info, f, ensure_ascii=False, indent=2)
             self.log.info("模型保存成功")

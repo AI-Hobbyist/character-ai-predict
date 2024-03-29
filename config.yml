@@ -1,4 +1,4 @@
-project_name: "\u89D2\u8272\u7684\u5206\u7C7B"
+project_name: "\u5168\u89D2\u8272"
 train:
   batch_size: 16
   device: cpu

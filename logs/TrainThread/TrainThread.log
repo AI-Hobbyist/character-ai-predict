@@ -324,3 +324,512 @@
 [19:53:25][TrainThread/INFO][save_model]:保存模型
 [19:53:25][TrainThread/INFO][save_model]:模型保存成功
 [19:53:29][TrainThread/INFO][train]:训练被中断
+[20:42:09][TrainThread/ERROR][train]:训练的时候发生错误
+[20:44:23][TrainThread/INFO][train]:开始训练
+[20:45:21][TrainThread/INFO][train]:步数 1, 损失率: 0.6713031768798828
+[20:45:24][TrainThread/INFO][train]:步数 2, 损失率: 0.641417522015779
+[20:45:28][TrainThread/INFO][train]:步数 3, 损失率: 0.6269893895024838
+[20:45:31][TrainThread/INFO][train]:步数 4, 损失率: 0.599902109477831
+[20:45:34][TrainThread/INFO][train]:步数 5, 损失率: 0.5811636986939803
+[20:45:38][TrainThread/INFO][train]:步数 6, 损失率: 0.5714367493339206
+[20:45:41][TrainThread/INFO][train]:步数 7, 损失率: 0.5600666087606679
+[20:45:45][TrainThread/INFO][train]:步数 8, 损失率: 0.542894985364831
+[20:45:49][TrainThread/INFO][train]:步数 9, 损失率: 0.5355309693709663
+[20:45:52][TrainThread/INFO][train]:验证中...
+[20:45:55][TrainThread/INFO][train]:准确率: 0.0%
+[20:45:55][TrainThread/INFO][train]:步数 10, 损失率: 0.5164062914641007
+[20:45:58][TrainThread/INFO][train]:步数 11, 损失率: 0.5007993387139362
+[20:46:02][TrainThread/INFO][train]:步数 12, 损失率: 0.4858352578204611
+[20:46:06][TrainThread/INFO][train]:步数 13, 损失率: 0.4782788960830025
+[20:46:09][TrainThread/INFO][train]:步数 14, 损失率: 0.47221234155737835
+[20:46:13][TrainThread/INFO][train]:步数 15, 损失率: 0.45759792742521865
+[20:46:16][TrainThread/INFO][train]:步数 16, 损失率: 0.44785214299741
+[20:46:20][TrainThread/INFO][train]:步数 17, 损失率: 0.43563452388929286
+[20:46:24][TrainThread/INFO][train]:步数 18, 损失率: 0.42587629815806516
+[20:46:27][TrainThread/INFO][train]:步数 19, 损失率: 0.4142664515453836
+[20:46:30][TrainThread/INFO][train]:验证中...
+[20:46:30][TrainThread/INFO][train]:准确率: 0.0%
+[20:46:30][TrainThread/INFO][train]:步数 20, 损失率: 0.4049124862836755
+[20:46:34][TrainThread/INFO][train]:步数 21, 损失率: 0.39533999691838806
+[20:46:37][TrainThread/INFO][train]:步数 22, 损失率: 0.3917580915533978
+[20:46:41][TrainThread/INFO][train]:步数 23, 损失率: 0.379002510983011
+[20:46:45][TrainThread/INFO][train]:步数 24, 损失率: 0.3760143456251725
+[20:46:48][TrainThread/INFO][train]:步数 25, 损失率: 0.3623682498931885
+[20:46:52][TrainThread/INFO][train]:步数 26, 损失率: 0.3591615282970926
+[20:46:55][TrainThread/INFO][train]:步数 27, 损失率: 0.34767824152241583
+[20:46:59][TrainThread/INFO][train]:步数 28, 损失率: 0.3391515814739725
+[20:47:02][TrainThread/INFO][train]:步数 29, 损失率: 0.33645837617957075
+[20:47:06][TrainThread/INFO][train]:验证中...
+[20:47:06][TrainThread/INFO][train]:准确率: 0.0%
+[20:47:06][TrainThread/INFO][train]:步数 30, 损失率: 0.32610237494758937
+[20:47:10][TrainThread/INFO][train]:步数 31, 损失率: 0.3211022190425707
+[20:47:13][TrainThread/INFO][train]:步数 32, 损失率: 0.3073654890060425
+[20:47:17][TrainThread/INFO][train]:步数 33, 损失率: 0.3014035328574803
+[20:47:21][TrainThread/INFO][train]:步数 34, 损失率: 0.2954082737798276
+[20:47:24][TrainThread/INFO][train]:步数 35, 损失率: 0.28909824101821235
+[20:47:28][TrainThread/INFO][train]:步数 36, 损失率: 0.28638393775276516
+[20:47:32][TrainThread/INFO][train]:步数 37, 损失率: 0.27373894090237827
+[20:47:35][TrainThread/INFO][train]:步数 38, 损失率: 0.26998616716136103
+[20:47:39][TrainThread/INFO][train]:步数 39, 损失率: 0.26600390931834345
+[20:47:42][TrainThread/INFO][train]:验证中...
+[20:47:42][TrainThread/INFO][train]:准确率: 10.0%
+[20:47:42][TrainThread/INFO][train]:步数 40, 损失率: 0.25831710255664325
+[20:47:46][TrainThread/INFO][train]:步数 41, 损失率: 0.2512582799662714
+[20:47:49][TrainThread/INFO][train]:步数 42, 损失率: 0.2457062234049258
+[20:47:53][TrainThread/INFO][train]:步数 43, 损失率: 0.23563037540601647
+[20:47:56][TrainThread/INFO][train]:步数 44, 损失率: 0.23743254516435705
+[20:48:00][TrainThread/INFO][train]:步数 45, 损失率: 0.2321662705877553
+[20:48:03][TrainThread/INFO][train]:步数 46, 损失率: 0.22271554573722507
+[20:48:07][TrainThread/INFO][train]:步数 47, 损失率: 0.21608504419741423
+[20:48:10][TrainThread/INFO][train]:步数 48, 损失率: 0.2124364127283511
+[20:48:14][TrainThread/INFO][train]:步数 49, 损失率: 0.21060002886730692
+[20:48:17][TrainThread/INFO][train]:验证中...
+[20:48:17][TrainThread/INFO][train]:准确率: 10.0%
+[20:48:17][TrainThread/INFO][train]:步数 50, 损失率: 0.20642882430035134
+[20:48:21][TrainThread/INFO][train]:步数 51, 损失率: 0.20272275883218516
+[20:48:24][TrainThread/INFO][train]:步数 52, 损失率: 0.19537314021069072
+[20:48:28][TrainThread/INFO][train]:步数 53, 损失率: 0.19154335519541865
+[20:48:31][TrainThread/INFO][train]:步数 54, 损失率: 0.18815980890522832
+[20:48:34][TrainThread/INFO][train]:步数 55, 损失率: 0.18508969700854758
+[20:48:38][TrainThread/INFO][train]:步数 56, 损失率: 0.18014348123384558
+[20:48:41][TrainThread/INFO][train]:步数 57, 损失率: 0.17947622071141783
+[20:48:44][TrainThread/INFO][train]:步数 58, 损失率: 0.17536796797876772
+[20:48:48][TrainThread/INFO][train]:步数 59, 损失率: 0.17291706437649934
+[20:48:51][TrainThread/INFO][train]:验证中...
+[20:48:52][TrainThread/INFO][train]:准确率: 10.0%
+[20:48:52][TrainThread/INFO][train]:步数 60, 损失率: 0.16907509772673898
+[20:48:55][TrainThread/INFO][train]:步数 61, 损失率: 0.16847663236700972
+[20:48:59][TrainThread/INFO][train]:步数 62, 损失率: 0.16637445221776548
+[20:49:02][TrainThread/INFO][train]:步数 63, 损失率: 0.16713667641515317
+[20:49:06][TrainThread/INFO][train]:步数 64, 损失率: 0.16242170437522557
+[20:49:10][TrainThread/INFO][train]:步数 65, 损失率: 0.16109341642130975
+[20:49:13][TrainThread/INFO][train]:步数 66, 损失率: 0.15947056801422782
+[20:49:17][TrainThread/INFO][train]:步数 67, 损失率: 0.15905579069386358
+[20:49:20][TrainThread/INFO][train]:步数 68, 损失率: 0.15597221644028372
+[20:49:23][TrainThread/INFO][train]:步数 69, 损失率: 0.15429104877554853
+[20:49:27][TrainThread/INFO][train]:验证中...
+[20:49:27][TrainThread/INFO][train]:准确率: 10.0%
+[20:49:27][TrainThread/INFO][train]:步数 70, 损失率: 0.15107262756513512
+[20:49:30][TrainThread/INFO][train]:步数 71, 损失率: 0.1515686527542446
+[20:49:34][TrainThread/INFO][train]:步数 72, 损失率: 0.15274100770121035
+[20:49:38][TrainThread/INFO][train]:步数 73, 损失率: 0.14619789538176164
+[20:49:41][TrainThread/INFO][train]:步数 74, 损失率: 0.14702521821726924
+[20:49:45][TrainThread/INFO][train]:步数 75, 损失率: 0.1443538126738175
+[20:49:48][TrainThread/INFO][train]:步数 76, 损失率: 0.1455961693888125
+[20:49:52][TrainThread/INFO][train]:步数 77, 损失率: 0.1434205158897068
+[20:49:55][TrainThread/INFO][train]:步数 78, 损失率: 0.14309957493906436
+[20:49:59][TrainThread/INFO][train]:步数 79, 损失率: 0.14189018218413643
+[20:50:02][TrainThread/INFO][train]:验证中...
+[20:50:02][TrainThread/INFO][train]:准确率: 10.0%
+[20:50:02][TrainThread/INFO][train]:步数 80, 损失率: 0.14092756146970004
+[20:50:06][TrainThread/INFO][train]:步数 81, 损失率: 0.13832726582236912
+[20:50:09][TrainThread/INFO][train]:步数 82, 损失率: 0.13766691581062648
+[20:50:12][TrainThread/INFO][train]:步数 83, 损失率: 0.13566454027010047
+[20:50:15][TrainThread/INFO][train]:步数 84, 损失率: 0.13543370599332064
+[20:50:19][TrainThread/INFO][train]:步数 85, 损失率: 0.13533991730731468
+[20:50:22][TrainThread/INFO][train]:步数 86, 损失率: 0.13420415131942084
+[20:50:26][TrainThread/INFO][train]:步数 87, 损失率: 0.1336148977279663
+[20:50:29][TrainThread/INFO][train]:步数 88, 损失率: 0.13373435113741003
+[20:50:32][TrainThread/INFO][train]:步数 89, 损失率: 0.13289637461952541
+[20:50:36][TrainThread/INFO][train]:验证中...
+[20:50:36][TrainThread/INFO][train]:准确率: 10.0%
+[20:50:36][TrainThread/INFO][train]:步数 90, 损失率: 0.13276070304538892
+[20:50:39][TrainThread/INFO][train]:步数 91, 损失率: 0.13010716956594717
+[20:50:43][TrainThread/INFO][train]:步数 92, 损失率: 0.12897408267726068
+[20:50:47][TrainThread/INFO][train]:步数 93, 损失率: 0.12669749622759613
+[20:50:51][TrainThread/INFO][train]:步数 94, 损失率: 0.1301093277723893
+[20:50:54][TrainThread/INFO][train]:步数 95, 损失率: 0.12682886227317478
+[20:50:57][TrainThread/INFO][train]:步数 96, 损失率: 0.12447200080622797
+[20:51:01][TrainThread/INFO][train]:步数 97, 损失率: 0.12612319770066635
+[20:51:04][TrainThread/INFO][train]:步数 98, 损失率: 0.12585857743802278
+[20:51:07][TrainThread/INFO][train]:步数 99, 损失率: 0.12452509299568508
+[20:51:10][TrainThread/INFO][train]:验证中...
+[20:51:10][TrainThread/INFO][train]:准确率: 20.0%
+[20:51:11][TrainThread/INFO][train]:步数 100, 损失率: 0.1241273107736007
+[20:51:11][TrainThread/INFO][save_model]:保存模型
+[20:51:11][TrainThread/ERROR][save_model]:保存模型的时候发生错误
+[20:51:12][TrainThread/INFO][save_model]:保存模型
+[20:51:12][TrainThread/ERROR][save_model]:保存模型的时候发生错误
+[20:51:14][TrainThread/INFO][save_model]:保存模型
+[20:51:14][TrainThread/ERROR][save_model]:保存模型的时候发生错误
+[20:51:18][TrainThread/INFO][save_model]:保存模型
+[20:51:18][TrainThread/ERROR][save_model]:保存模型的时候发生错误
+[20:51:26][TrainThread/INFO][save_model]:保存模型
+[20:51:26][TrainThread/ERROR][save_model]:保存模型的时候发生错误
+[20:51:42][TrainThread/ERROR][train]:训练的时候发生错误
+[20:53:24][TrainThread/INFO][train]:开始训练
+[20:53:42][TrainThread/INFO][train]:步数 1, 损失率: 0.7270186258398968
+[20:53:45][TrainThread/INFO][train]:步数 2, 损失率: 0.7155626545781675
+[20:53:49][TrainThread/INFO][train]:步数 3, 损失率: 0.705557454150656
+[20:53:52][TrainThread/INFO][train]:步数 4, 损失率: 0.6937919450842815
+[20:53:53][TrainThread/INFO][train]:训练被中断
+[20:54:50][TrainThread/INFO][train_continue_with_model]:加载已有模型并继续训练，上次模型步数100
+[20:54:52][TrainThread/INFO][train]:开始训练
+[20:54:59][TrainThread/INFO][train]:步数 101, 损失率: 0.1236513904903246
+[20:55:03][TrainThread/INFO][train]:步数 102, 损失率: 0.12070886259493621
+[20:55:06][TrainThread/INFO][train]:步数 103, 损失率: 0.11910104958907418
+[20:55:10][TrainThread/INFO][train]:步数 104, 损失率: 0.12034826278686524
+[20:55:13][TrainThread/INFO][train]:步数 105, 损失率: 0.11889330511507781
+[20:55:17][TrainThread/INFO][train]:步数 106, 损失率: 0.11735790708790654
+[20:55:21][TrainThread/INFO][train]:步数 107, 损失率: 0.11749763903410539
+[20:55:25][TrainThread/INFO][train]:步数 108, 损失率: 0.11726229864618053
+[20:55:28][TrainThread/INFO][train]:步数 109, 损失率: 0.1168312466662863
+[20:55:32][TrainThread/INFO][train]:验证中...
+[20:55:32][TrainThread/INFO][train]:准确率: 20.0%
+[20:55:32][TrainThread/INFO][train]:步数 110, 损失率: 0.11502649732258009
+[20:55:35][TrainThread/INFO][train]:步数 111, 损失率: 0.11449457510657933
+[20:55:38][TrainThread/INFO][train]:步数 112, 损失率: 0.1137684728788293
+[20:55:42][TrainThread/INFO][train]:步数 113, 损失率: 0.11174658433250759
+[20:55:46][TrainThread/INFO][train]:步数 114, 损失率: 0.11212870971016262
+[20:55:49][TrainThread/INFO][train]:步数 115, 损失率: 0.1104294574779013
+[20:55:53][TrainThread/INFO][train]:步数 116, 损失率: 0.11176819490349811
+[20:55:56][TrainThread/INFO][train]:步数 117, 损失率: 0.10993092215579489
+[20:56:00][TrainThread/INFO][train]:步数 118, 损失率: 0.1092778838199118
+[20:56:03][TrainThread/INFO][train]:步数 119, 损失率: 0.10853274905163308
+[20:56:06][TrainThread/INFO][train]:验证中...
+[20:56:06][TrainThread/INFO][train]:准确率: 40.0%
+[20:56:06][TrainThread/INFO][train]:步数 120, 损失率: 0.11073336342106695
+[20:56:10][TrainThread/INFO][train]:步数 121, 损失率: 0.10899461196816486
+[20:56:13][TrainThread/INFO][train]:步数 122, 损失率: 0.10699722559555717
+[20:56:17][TrainThread/INFO][train]:步数 123, 损失率: 0.10728621068208113
+[20:56:20][TrainThread/INFO][train]:步数 124, 损失率: 0.10687658216642297
+[20:56:24][TrainThread/INFO][train]:步数 125, 损失率: 0.10849631299143252
+[20:56:27][TrainThread/INFO][train]:步数 126, 损失率: 0.10728015536847321
+[20:56:31][TrainThread/INFO][train]:步数 127, 损失率: 0.10582586164059846
+[20:56:34][TrainThread/INFO][train]:步数 128, 损失率: 0.10509700049524721
+[20:56:38][TrainThread/INFO][train]:步数 129, 损失率: 0.10302225299503492
+[20:56:41][TrainThread/INFO][train]:验证中...
+[20:56:41][TrainThread/INFO][train]:准确率: 40.0%
+[20:56:41][TrainThread/INFO][train]:步数 130, 损失率: 0.10460648588512254
+[20:56:45][TrainThread/INFO][train]:步数 131, 损失率: 0.10362851671550585
+[20:56:48][TrainThread/INFO][train]:步数 132, 损失率: 0.10345635310463283
+[20:56:52][TrainThread/INFO][train]:步数 133, 损失率: 0.1014836337255395
+[20:56:55][TrainThread/INFO][train]:步数 134, 损失率: 0.10263123460437941
+[20:56:59][TrainThread/INFO][train]:步数 135, 损失率: 0.10195465450701506
+[20:57:02][TrainThread/INFO][train]:步数 136, 损失率: 0.10154853955559108
+[20:57:06][TrainThread/INFO][train]:步数 137, 损失率: 0.10084570853606514
+[20:57:09][TrainThread/INFO][train]:步数 138, 损失率: 0.10257234003232873
+[20:57:13][TrainThread/INFO][train]:步数 139, 损失率: 0.09993421461271203
+[20:57:16][TrainThread/INFO][train]:验证中...
+[20:57:16][TrainThread/INFO][train]:准确率: 40.0%
+[20:57:16][TrainThread/INFO][train]:步数 140, 损失率: 0.10053053731503694
+[20:57:20][TrainThread/INFO][train]:步数 141, 损失率: 0.09899463549904201
+[20:57:23][TrainThread/INFO][train]:步数 142, 损失率: 0.09846937345421833
+[20:57:27][TrainThread/INFO][train]:步数 143, 损失率: 0.09905992124391638
+[20:57:30][TrainThread/INFO][train]:步数 144, 损失率: 0.09797034781912099
+[20:57:33][TrainThread/INFO][train]:步数 145, 损失率: 0.09842732833779376
+[20:57:37][TrainThread/INFO][train]:步数 146, 损失率: 0.09798867650654004
+[20:57:41][TrainThread/INFO][train]:步数 147, 损失率: 0.09898113530615102
+[20:57:45][TrainThread/INFO][train]:步数 148, 损失率: 0.09892210390256799
+[20:57:48][TrainThread/INFO][train]:步数 149, 损失率: 0.09748750562253206
+[20:57:51][TrainThread/INFO][train]:验证中...
+[20:57:51][TrainThread/INFO][train]:准确率: 40.0%
+[20:57:51][TrainThread/INFO][train]:步数 150, 损失率: 0.09727185238962588
+[20:57:55][TrainThread/INFO][train]:步数 151, 损失率: 0.09649547493976096
+[20:57:58][TrainThread/INFO][train]:步数 152, 损失率: 0.09707956314086914
+[20:58:01][TrainThread/INFO][train]:步数 153, 损失率: 0.09390448746473892
+[20:58:04][TrainThread/INFO][train]:步数 154, 损失率: 0.09422284675681072
+[20:58:08][TrainThread/INFO][train]:步数 155, 损失率: 0.09444100131159243
+[20:58:11][TrainThread/INFO][train]:步数 156, 损失率: 0.09403217564458433
+[20:58:14][TrainThread/INFO][train]:步数 157, 损失率: 0.09442390307136204
+[20:58:18][TrainThread/INFO][train]:步数 158, 损失率: 0.09301485756169195
+[20:58:21][TrainThread/INFO][train]:步数 159, 损失率: 0.09425207998441613
+[20:58:24][TrainThread/INFO][train]:验证中...
+[20:58:24][TrainThread/INFO][train]:准确率: 50.0%
+[20:58:24][TrainThread/INFO][train]:步数 160, 损失率: 0.0917714976746103
+[20:58:28][TrainThread/INFO][train]:步数 161, 损失率: 0.09348297533781633
+[20:58:31][TrainThread/INFO][train]:步数 162, 损失率: 0.09343825112218442
+[20:58:34][TrainThread/INFO][train]:步数 163, 损失率: 0.09245845805043759
+[20:58:37][TrainThread/INFO][train]:步数 164, 损失率: 0.09320895930995111
+[20:58:41][TrainThread/INFO][train]:步数 165, 损失率: 0.09109159448872442
+[20:58:44][TrainThread/INFO][train]:步数 166, 损失率: 0.09221775790919429
+[20:58:47][TrainThread/INFO][train]:步数 167, 损失率: 0.09061178383619889
+[20:58:51][TrainThread/INFO][train]:步数 168, 损失率: 0.0909313124159108
+[20:58:54][TrainThread/INFO][train]:步数 169, 损失率: 0.09137051882951155
+[20:58:57][TrainThread/INFO][train]:验证中...
+[20:58:57][TrainThread/INFO][train]:准确率: 50.0%
+[20:58:57][TrainThread/INFO][train]:步数 170, 损失率: 0.0901925361674765
+[20:59:01][TrainThread/INFO][train]:步数 171, 损失率: 0.08906951339348503
+[20:59:04][TrainThread/INFO][train]:步数 172, 损失率: 0.09017204253569894
+[20:59:07][TrainThread/INFO][train]:步数 173, 损失率: 0.08954488142676975
+[20:59:11][TrainThread/INFO][train]:步数 174, 损失率: 0.08924428691034732
+[20:59:14][TrainThread/INFO][train]:步数 175, 损失率: 0.0892550281856371
+[20:59:18][TrainThread/INFO][train]:步数 176, 损失率: 0.08906837701797485
+[20:59:22][TrainThread/INFO][train]:步数 177, 损失率: 0.08833521811858468
+[20:59:25][TrainThread/INFO][train]:步数 178, 损失率: 0.08902296605317489
+[20:59:28][TrainThread/INFO][train]:步数 179, 损失率: 0.08692388068074765
+[20:59:32][TrainThread/INFO][train]:验证中...
+[20:59:32][TrainThread/INFO][train]:准确率: 80.0%
+[20:59:32][TrainThread/INFO][train]:步数 180, 损失率: 0.08803716535153597
+[20:59:35][TrainThread/INFO][train]:步数 181, 损失率: 0.08734433961951214
+[20:59:39][TrainThread/INFO][train]:步数 182, 损失率: 0.08828479829041855
+[20:59:42][TrainThread/INFO][train]:步数 183, 损失率: 0.08737222966940507
+[20:59:45][TrainThread/INFO][train]:步数 184, 损失率: 0.08535422838252524
+[20:59:49][TrainThread/INFO][train]:步数 185, 损失率: 0.08682674946992294
+[20:59:52][TrainThread/INFO][train]:步数 186, 损失率: 0.0880195342976114
+[20:59:56][TrainThread/INFO][train]:步数 187, 损失率: 0.08506970016852669
+[21:00:00][TrainThread/INFO][train]:步数 188, 损失率: 0.08676423378612684
+[21:00:04][TrainThread/INFO][train]:步数 189, 损失率: 0.08600467961767445
+[21:00:07][TrainThread/INFO][train]:验证中...
+[21:00:07][TrainThread/INFO][train]:准确率: 80.0%
+[21:00:07][TrainThread/INFO][train]:步数 190, 损失率: 0.08515800341315892
+[21:00:11][TrainThread/INFO][train]:步数 191, 损失率: 0.08523378735003265
+[21:00:14][TrainThread/INFO][train]:步数 192, 损失率: 0.08502507209777832
+[21:00:17][TrainThread/INFO][train]:步数 193, 损失率: 0.08756903461788011
+[21:00:21][TrainThread/INFO][train]:步数 194, 损失率: 0.0856365107971689
+[21:00:24][TrainThread/INFO][train]:步数 195, 损失率: 0.08503605516060539
+[21:00:27][TrainThread/INFO][train]:步数 196, 损失率: 0.08485253323679386
+[21:00:30][TrainThread/INFO][train]:步数 197, 损失率: 0.08398929627045341
+[21:00:34][TrainThread/INFO][train]:步数 198, 损失率: 0.08422466568324877
+[21:00:37][TrainThread/INFO][train]:步数 199, 损失率: 0.08408877020296843
+[21:00:40][TrainThread/INFO][train]:验证中...
+[21:00:40][TrainThread/INFO][train]:准确率: 80.0%
+[21:00:40][TrainThread/INFO][train]:步数 200, 损失率: 0.08390699443609818
+[21:00:40][TrainThread/INFO][save_model]:保存模型
+[21:00:41][TrainThread/INFO][save_model]:模型保存成功
+[21:00:44][TrainThread/INFO][train]:步数 201, 损失率: 0.08269346045411151
+[21:00:47][TrainThread/INFO][train]:步数 202, 损失率: 0.08183699949927951
+[21:00:51][TrainThread/INFO][train]:步数 203, 损失率: 0.08391883528750876
+[21:00:54][TrainThread/INFO][train]:步数 204, 损失率: 0.08252211290857066
+[21:00:58][TrainThread/INFO][train]:步数 205, 损失率: 0.08384918596433556
+[21:01:02][TrainThread/INFO][train]:步数 206, 损失率: 0.08116081978963768
+[21:01:05][TrainThread/INFO][train]:步数 207, 损失率: 0.0826856307361437
+[21:01:09][TrainThread/INFO][train]:步数 208, 损失率: 0.08312879127004873
+[21:01:12][TrainThread/INFO][train]:步数 209, 损失率: 0.0811555722485418
+[21:01:16][TrainThread/INFO][train]:验证中...
+[21:01:16][TrainThread/INFO][train]:准确率: 80.0%
+[21:01:16][TrainThread/INFO][train]:步数 210, 损失率: 0.08063927837040114
+[21:01:19][TrainThread/INFO][train]:步数 211, 损失率: 0.08055507359297379
+[21:01:23][TrainThread/INFO][train]:步数 212, 损失率: 0.08118837838587553
+[21:01:26][TrainThread/INFO][train]:步数 213, 损失率: 0.0813905612282131
+[21:01:30][TrainThread/INFO][train]:步数 214, 损失率: 0.08073868855186131
+[21:01:34][TrainThread/INFO][train]:步数 215, 损失率: 0.08111864483874777
+[21:01:37][TrainThread/INFO][train]:步数 216, 损失率: 0.07999616887258447
+[21:01:41][TrainThread/INFO][train]:步数 217, 损失率: 0.07910959098650061
+[21:01:44][TrainThread/INFO][train]:步数 218, 损失率: 0.08028643209001292
+[21:01:48][TrainThread/INFO][train]:步数 219, 损失率: 0.07981240490208501
+[21:01:51][TrainThread/INFO][train]:验证中...
+[21:01:51][TrainThread/INFO][train]:准确率: 80.0%
+[21:01:51][TrainThread/INFO][train]:步数 220, 损失率: 0.0815345717513043
+[21:01:55][TrainThread/INFO][train]:步数 221, 损失率: 0.07958625062652257
+[21:01:58][TrainThread/INFO][train]:步数 222, 损失率: 0.08013731111650882
+[21:02:02][TrainThread/INFO][train]:步数 223, 损失率: 0.07881831708161727
+[21:02:06][TrainThread/INFO][train]:步数 224, 损失率: 0.08013469032619311
+[21:02:09][TrainThread/INFO][train]:步数 225, 损失率: 0.0779606502989064
+[21:02:13][TrainThread/INFO][train]:步数 226, 损失率: 0.07870184623676797
+[21:02:16][TrainThread/INFO][train]:步数 227, 损失率: 0.07869090152823406
+[21:02:20][TrainThread/INFO][train]:步数 228, 损失率: 0.07799449252045673
+[21:02:23][TrainThread/INFO][train]:步数 229, 损失率: 0.08035101579583209
+[21:02:27][TrainThread/INFO][train]:验证中...
+[21:02:27][TrainThread/INFO][train]:准确率: 80.0%
+[21:02:27][TrainThread/INFO][train]:步数 230, 损失率: 0.07806267479191656
+[21:02:30][TrainThread/INFO][train]:步数 231, 损失率: 0.07758469581604004
+[21:02:34][TrainThread/INFO][train]:步数 232, 损失率: 0.07649346693702366
+[21:02:37][TrainThread/INFO][train]:步数 233, 损失率: 0.07746095942414326
+[21:02:41][TrainThread/INFO][train]:步数 234, 损失率: 0.07642570345298104
+[21:02:44][TrainThread/INFO][train]:步数 235, 损失率: 0.07546752095222473
+[21:02:48][TrainThread/INFO][train]:步数 236, 损失率: 0.07760036250819331
+[21:02:51][TrainThread/INFO][train]:步数 237, 损失率: 0.0766168923481651
+[21:02:55][TrainThread/INFO][train]:步数 238, 损失率: 0.07744021130644757
+[21:02:59][TrainThread/INFO][train]:步数 239, 损失率: 0.07634782557902128
+[21:03:02][TrainThread/INFO][train]:验证中...
+[21:03:02][TrainThread/INFO][train]:准确率: 80.0%
+[21:03:02][TrainThread/INFO][train]:步数 240, 损失率: 0.07768023791520492
+[21:03:06][TrainThread/INFO][train]:步数 241, 损失率: 0.07602401919986891
+[21:03:09][TrainThread/INFO][train]:步数 242, 损失率: 0.07518829444180364
+[21:03:13][TrainThread/INFO][train]:步数 243, 损失率: 0.07529536226521368
+[21:03:16][TrainThread/INFO][train]:步数 244, 损失率: 0.07453309012495953
+[21:03:20][TrainThread/INFO][train]:步数 245, 损失率: 0.07470049884008324
+[21:03:23][TrainThread/INFO][train]:步数 246, 损失率: 0.07469410274339759
+[21:03:27][TrainThread/INFO][train]:步数 247, 损失率: 0.07602202399917271
+[21:03:30][TrainThread/INFO][train]:步数 248, 损失率: 0.07482189795245295
+[21:03:33][TrainThread/INFO][train]:步数 249, 损失率: 0.07396869426188261
+[21:03:37][TrainThread/INFO][train]:验证中...
+[21:03:37][TrainThread/INFO][train]:准确率: 80.0%
+[21:03:37][TrainThread/INFO][train]:步数 250, 损失率: 0.07396269544311192
+[21:03:40][TrainThread/INFO][train]:步数 251, 损失率: 0.07376838974330736
+[21:03:44][TrainThread/INFO][train]:步数 252, 损失率: 0.0733528222726739
+[21:03:48][TrainThread/INFO][train]:步数 253, 损失率: 0.07377303475918977
+[21:03:51][TrainThread/INFO][train]:步数 254, 损失率: 0.0737917405107747
+[21:03:55][TrainThread/INFO][train]:步数 255, 损失率: 0.07320364039877186
+[21:03:58][TrainThread/INFO][train]:步数 256, 损失率: 0.0737316818340965
+[21:04:02][TrainThread/INFO][train]:步数 257, 损失率: 0.07394958941832833
+[21:04:05][TrainThread/INFO][train]:步数 258, 损失率: 0.07408881472504657
+[21:04:09][TrainThread/INFO][train]:步数 259, 损失率: 0.07311784547308217
+[21:04:13][TrainThread/INFO][train]:验证中...
+[21:04:13][TrainThread/INFO][train]:准确率: 80.0%
+[21:04:13][TrainThread/INFO][train]:步数 260, 损失率: 0.07196254989375239
+[21:04:17][TrainThread/INFO][train]:步数 261, 损失率: 0.07235871553421021
+[21:04:20][TrainThread/INFO][train]:步数 262, 损失率: 0.07164805661077085
+[21:04:24][TrainThread/INFO][train]:步数 263, 损失率: 0.07263818305471668
+[21:04:29][TrainThread/INFO][train]:步数 264, 损失率: 0.07315333045047262
+[21:04:51][TrainThread/INFO][train]:步数 265, 损失率: 0.07200088319571121
+[21:04:56][TrainThread/INFO][train]:步数 266, 损失率: 0.07078069033830062
+[21:04:59][TrainThread/INFO][train]:步数 267, 损失率: 0.0715130961459616
+[21:05:03][TrainThread/INFO][train]:步数 268, 损失率: 0.0724435681882112
+[21:05:06][TrainThread/INFO][train]:步数 269, 损失率: 0.07120254428490348
+[21:05:09][TrainThread/INFO][train]:验证中...
+[21:05:16][TrainThread/INFO][train]:准确率: 80.0%
+[21:05:16][TrainThread/INFO][train]:步数 270, 损失率: 0.07111575162929037
+[21:05:19][TrainThread/INFO][train]:步数 271, 损失率: 0.069931349547013
+[21:05:22][TrainThread/INFO][train]:步数 272, 损失率: 0.07112863815349081
+[21:05:25][TrainThread/INFO][train]:步数 273, 损失率: 0.07047017242597498
+[21:05:29][TrainThread/INFO][train]:步数 274, 损失率: 0.07011309551156085
+[21:05:32][TrainThread/INFO][train]:步数 275, 损失率: 0.07043683762135713
+[21:05:35][TrainThread/INFO][train]:步数 276, 损失率: 0.07013013829355655
+[21:05:39][TrainThread/INFO][train]:步数 277, 损失率: 0.07004356695258099
+[21:05:42][TrainThread/INFO][train]:步数 278, 损失率: 0.06986225376958433
+[21:05:45][TrainThread/INFO][train]:步数 279, 损失率: 0.06956973231357078
+[21:05:48][TrainThread/INFO][train]:验证中...
+[21:05:48][TrainThread/INFO][train]:准确率: 80.0%
+[21:05:48][TrainThread/INFO][train]:步数 280, 损失率: 0.06918606058410977
+[21:05:52][TrainThread/INFO][train]:步数 281, 损失率: 0.06913030665853749
+[21:05:55][TrainThread/INFO][train]:步数 282, 损失率: 0.0692561704179515
+[21:05:58][TrainThread/INFO][train]:步数 283, 损失率: 0.06914838915285856
+[21:06:01][TrainThread/INFO][train]:步数 284, 损失率: 0.0682198835455853
+[21:06:04][TrainThread/INFO][train]:步数 285, 损失率: 0.069931837009347
+[21:06:07][TrainThread/INFO][train]:步数 286, 损失率: 0.06819118054016776
+[21:06:10][TrainThread/INFO][train]:步数 287, 损失率: 0.06918396327806556
+[21:06:13][TrainThread/INFO][train]:步数 288, 损失率: 0.06839440413143323
+[21:06:16][TrainThread/INFO][train]:步数 289, 损失率: 0.06881208445714868
+[21:06:19][TrainThread/INFO][train]:验证中...
+[21:06:19][TrainThread/INFO][train]:准确率: 80.0%
+[21:06:19][TrainThread/INFO][train]:步数 290, 损失率: 0.06678469440211421
+[21:06:22][TrainThread/INFO][train]:步数 291, 损失率: 0.06706886680229851
+[21:06:25][TrainThread/INFO][train]:步数 292, 损失率: 0.06748526925626008
+[21:06:28][TrainThread/INFO][train]:步数 293, 损失率: 0.06689075749853383
+[21:06:31][TrainThread/INFO][train]:步数 294, 损失率: 0.0679288317327914
+[21:06:34][TrainThread/INFO][train]:步数 295, 损失率: 0.06814286967982416
+[21:06:37][TrainThread/INFO][train]:步数 296, 损失率: 0.06709889717724012
+[21:06:40][TrainThread/INFO][train]:步数 297, 损失率: 0.06623727264611617
+[21:06:43][TrainThread/INFO][train]:步数 298, 损失率: 0.06615126754926598
+[21:06:46][TrainThread/INFO][train]:步数 299, 损失率: 0.06651229910228564
+[21:06:49][TrainThread/INFO][train]:验证中...
+[21:06:49][TrainThread/INFO][train]:准确率: 80.0%
+[21:06:49][TrainThread/INFO][train]:步数 300, 损失率: 0.06740493411603181
+[21:06:49][TrainThread/INFO][save_model]:保存模型
+[21:06:50][TrainThread/INFO][save_model]:模型保存成功
+[21:06:53][TrainThread/INFO][train]:步数 301, 损失率: 0.06635769320570904
+[21:06:55][TrainThread/INFO][train]:步数 302, 损失率: 0.0663170223650725
+[21:06:58][TrainThread/INFO][train]:步数 303, 损失率: 0.06512671734975732
+[21:07:01][TrainThread/INFO][train]:步数 304, 损失率: 0.06572272622066995
+[21:07:04][TrainThread/INFO][train]:步数 305, 损失率: 0.06804030822670978
+[21:07:07][TrainThread/INFO][train]:步数 306, 损失率: 0.06543924938077512
+[21:07:10][TrainThread/INFO][train]:步数 307, 损失率: 0.06517359018325805
+[21:07:13][TrainThread/INFO][train]:步数 308, 损失率: 0.06560099980105524
+[21:07:16][TrainThread/INFO][train]:步数 309, 损失率: 0.06507574112518974
+[21:07:19][TrainThread/INFO][train]:验证中...
+[21:07:19][TrainThread/INFO][train]:准确率: 80.0%
+[21:07:19][TrainThread/INFO][train]:步数 310, 损失率: 0.06504849869271984
+[21:07:23][TrainThread/INFO][train]:步数 311, 损失率: 0.06479535828466
+[21:07:25][TrainThread/INFO][train]:步数 312, 损失率: 0.06600781990134198
+[21:07:28][TrainThread/INFO][train]:步数 313, 损失率: 0.0646489635757778
+[21:07:32][TrainThread/INFO][train]:步数 314, 损失率: 0.06402242391005807
+[21:07:35][TrainThread/INFO][train]:步数 315, 损失率: 0.06527357127355493
+[21:07:38][TrainThread/INFO][train]:步数 316, 损失率: 0.06472344605819039
+[21:07:40][TrainThread/INFO][train]:步数 317, 损失率: 0.06394384969835697
+[21:07:44][TrainThread/INFO][train]:步数 318, 损失率: 0.06439914133237756
+[21:07:47][TrainThread/INFO][train]:步数 319, 损失率: 0.06467518339986386
+[21:07:50][TrainThread/INFO][train]:验证中...
+[21:07:50][TrainThread/INFO][train]:准确率: 80.0%
+[21:07:50][TrainThread/INFO][train]:步数 320, 损失率: 0.06313854792843694
+[21:07:53][TrainThread/INFO][train]:步数 321, 损失率: 0.06400980845741604
+[21:07:56][TrainThread/INFO][train]:步数 322, 损失率: 0.06473445088967034
+[21:07:59][TrainThread/INFO][train]:步数 323, 损失率: 0.06349097334820292
+[21:08:02][TrainThread/INFO][train]:步数 324, 损失率: 0.06495093055393385
+[21:08:05][TrainThread/INFO][train]:步数 325, 损失率: 0.0640875800796177
+[21:08:08][TrainThread/INFO][train]:步数 326, 损失率: 0.06315822653148485
+[21:08:11][TrainThread/INFO][train]:步数 327, 损失率: 0.06365492395732714
+[21:08:14][TrainThread/INFO][train]:步数 328, 损失率: 0.0640769098116004
+[21:08:18][TrainThread/INFO][train]:步数 329, 损失率: 0.06254624931708626
+[21:08:21][TrainThread/INFO][train]:验证中...
+[21:08:21][TrainThread/INFO][train]:准确率: 90.0%
+[21:08:21][TrainThread/INFO][train]:步数 330, 损失率: 0.06198238937751106
+[21:08:24][TrainThread/INFO][train]:步数 331, 损失率: 0.06383981834287229
+[21:08:27][TrainThread/INFO][train]:步数 332, 损失率: 0.06441881008770155
+[21:08:30][TrainThread/INFO][train]:步数 333, 损失率: 0.06214047255723373
+[21:08:32][TrainThread/INFO][train]:步数 334, 损失率: 0.06235023996104365
+[21:08:36][TrainThread/INFO][train]:步数 335, 损失率: 0.06144840535910233
+[21:08:39][TrainThread/INFO][train]:步数 336, 损失率: 0.06153773224872092
+[21:08:42][TrainThread/INFO][train]:步数 337, 损失率: 0.0615633619868237
+[21:08:45][TrainThread/INFO][train]:步数 338, 损失率: 0.06194505665613257
+[21:08:48][TrainThread/INFO][train]:步数 339, 损失率: 0.06113689282666082
+[21:08:51][TrainThread/INFO][train]:验证中...
+[21:08:51][TrainThread/INFO][train]:准确率: 90.0%
+[21:08:51][TrainThread/INFO][train]:步数 340, 损失率: 0.06085838286773018
+[21:08:54][TrainThread/INFO][train]:步数 341, 损失率: 0.060840481001397835
+[21:08:57][TrainThread/INFO][train]:步数 342, 损失率: 0.06225108504295349
+[21:09:00][TrainThread/INFO][train]:步数 343, 损失率: 0.06198604132818139
+[21:09:03][TrainThread/INFO][train]:步数 344, 损失率: 0.06076896760774695
+[21:09:07][TrainThread/INFO][train]:步数 345, 损失率: 0.06103460685066555
+[21:09:10][TrainThread/INFO][train]:步数 346, 损失率: 0.061110161957533465
+[21:09:13][TrainThread/INFO][train]:步数 347, 损失率: 0.060426624443220056
+[21:09:16][TrainThread/INFO][train]:步数 348, 损失率: 0.061909846637559975
+[21:09:19][TrainThread/INFO][train]:步数 349, 损失率: 0.06034998634587164
+[21:09:22][TrainThread/INFO][train]:验证中...
+[21:09:22][TrainThread/INFO][train]:准确率: 90.0%
+[21:09:22][TrainThread/INFO][train]:步数 350, 损失率: 0.059373977909917414
+[21:09:25][TrainThread/INFO][train]:步数 351, 损失率: 0.059724173597667525
+[21:09:28][TrainThread/INFO][train]:步数 352, 损失率: 0.05956928444945294
+[21:09:31][TrainThread/INFO][train]:步数 353, 损失率: 0.05956061119618623
+[21:09:34][TrainThread/INFO][train]:步数 354, 损失率: 0.0593289870282878
+[21:09:37][TrainThread/INFO][train]:步数 355, 损失率: 0.05985355273537014
+[21:09:41][TrainThread/INFO][train]:步数 356, 损失率: 0.05956861273102138
+[21:09:44][TrainThread/INFO][train]:步数 357, 损失率: 0.05940282837204311
+[21:09:47][TrainThread/INFO][train]:步数 358, 损失率: 0.05854273023812667
+[21:09:51][TrainThread/INFO][train]:步数 359, 损失率: 0.05896549432174019
+[21:09:54][TrainThread/INFO][train]:验证中...
+[21:09:55][TrainThread/INFO][train]:准确率: 90.0%
+[21:09:55][TrainThread/INFO][train]:步数 360, 损失率: 0.059242431495500646
+[21:09:57][TrainThread/INFO][train]:步数 361, 损失率: 0.058133765407230545
+[21:10:01][TrainThread/INFO][train]:步数 362, 损失率: 0.05903981587161188
+[21:10:04][TrainThread/INFO][train]:步数 363, 损失率: 0.05831744256226913
+[21:10:07][TrainThread/INFO][train]:步数 364, 损失率: 0.05850181760995284
+[21:10:10][TrainThread/INFO][train]:步数 365, 损失率: 0.05793905491414277
+[21:10:13][TrainThread/INFO][train]:步数 366, 损失率: 0.058083246583523956
+[21:10:16][TrainThread/INFO][train]:步数 367, 损失率: 0.058335254762483676
+[21:10:19][TrainThread/INFO][train]:步数 368, 损失率: 0.05908149973205898
+[21:10:22][TrainThread/INFO][train]:步数 369, 损失率: 0.05830387810002203
+[21:10:25][TrainThread/INFO][train]:验证中...
+[21:10:25][TrainThread/INFO][train]:准确率: 100.0%
+[21:10:25][TrainThread/INFO][train]:步数 370, 损失率: 0.057649676955264545
+[21:10:28][TrainThread/INFO][train]:步数 371, 损失率: 0.05745730192764946
+[21:10:31][TrainThread/INFO][train]:步数 372, 损失率: 0.0570124846437703
+[21:10:34][TrainThread/INFO][train]:步数 373, 损失率: 0.057120553047760675
+[21:10:37][TrainThread/INFO][train]:步数 374, 损失率: 0.0567190232484237
+[21:10:40][TrainThread/INFO][train]:步数 375, 损失率: 0.05744464034619539
+[21:10:43][TrainThread/INFO][train]:步数 376, 损失率: 0.05775619563849076
+[21:10:46][TrainThread/INFO][train]:步数 377, 损失率: 0.05781477560167727
+[21:10:49][TrainThread/INFO][train]:步数 378, 损失率: 0.05652041461156762
+[21:10:52][TrainThread/INFO][train]:步数 379, 损失率: 0.05653979959695236
+[21:10:55][TrainThread/INFO][train]:验证中...
+[21:10:55][TrainThread/INFO][train]:准确率: 100.0%
+[21:10:55][TrainThread/INFO][train]:步数 380, 损失率: 0.05648415295974068
+[21:10:58][TrainThread/INFO][train]:步数 381, 损失率: 0.05780943528465603
+[21:11:01][TrainThread/INFO][train]:步数 382, 损失率: 0.05609726491181747
+[21:11:04][TrainThread/INFO][train]:步数 383, 损失率: 0.055925404766331545
+[21:11:07][TrainThread/INFO][train]:步数 384, 损失率: 0.05728779746138531
+[21:11:10][TrainThread/INFO][train]:步数 385, 损失率: 0.05686692025350488
+[21:11:13][TrainThread/INFO][train]:步数 386, 损失率: 0.055708966825319374
+[21:11:16][TrainThread/INFO][train]:步数 387, 损失率: 0.056124357296072916
+[21:11:19][TrainThread/INFO][train]:步数 388, 损失率: 0.056508803108464116
+[21:11:22][TrainThread/INFO][train]:步数 389, 损失率: 0.055640075776887975
+[21:11:25][TrainThread/INFO][train]:验证中...
+[21:11:25][TrainThread/INFO][train]:准确率: 100.0%
+[21:11:25][TrainThread/INFO][train]:步数 390, 损失率: 0.055584025642146234
+[21:11:28][TrainThread/INFO][train]:步数 391, 损失率: 0.05672238132228022
+[21:11:31][TrainThread/INFO][train]:步数 392, 损失率: 0.05510321544564289
+[21:11:34][TrainThread/INFO][train]:步数 393, 损失率: 0.05473975668782773
+[21:11:37][TrainThread/INFO][train]:步数 394, 损失率: 0.05545566392981488
+[21:11:40][TrainThread/INFO][train]:步数 395, 损失率: 0.05628603385842365
+[21:11:43][TrainThread/INFO][train]:步数 396, 损失率: 0.05629489629164986
+[21:11:46][TrainThread/INFO][train]:步数 397, 损失率: 0.0561290935329769
+[21:11:49][TrainThread/INFO][train]:步数 398, 损失率: 0.054166401987490446
+[21:11:52][TrainThread/INFO][train]:步数 399, 损失率: 0.056075281682221784
+[21:11:54][TrainThread/INFO][train]:验证中...
+[21:11:55][TrainThread/INFO][train]:准确率: 100.0%
+[21:11:55][TrainThread/INFO][train]:步数 400, 损失率: 0.054216168237769084
+[21:11:55][TrainThread/INFO][save_model]:保存模型
+[21:11:55][TrainThread/INFO][save_model]:模型保存成功
+[21:11:57][TrainThread/INFO][train]:步数 401, 损失率: 0.053924185555914175
+[21:11:58][TrainThread/INFO][train]:训练被中断
