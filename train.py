@@ -9,7 +9,7 @@ import global_exc_handler
 from rich.progress import Progress
 import torch,os
 from Decorators import retry
-import json
+import json,time
 
 # 定义CNN游戏角色语音分类模型
 class CNNclassifyModel(nn.Module):
@@ -96,6 +96,8 @@ class Trainer:
             self.progress.start()
             for epoch in range(self.num_epochs - latest_steps):
                 running_loss = 0.0
+                start_time = time.time()
+                
                 for inputs, labels in self.data_loader:
                     inputs, labels = inputs.to(self.device), labels.to(self.device)
 
@@ -115,7 +117,7 @@ class Trainer:
                     self.optimizer.step()
 
                     running_loss += loss.item()
-                
+                            
                 # 显存不足的时候发出告警
                 if self.device.type == "cuda":
                     total_gpu_memory = torch.cuda.get_device_properties(self.device).total_memory / (1024.0 ** 3)
@@ -129,9 +131,17 @@ class Trainer:
                     self.log.info(f'验证中...')
                     accuracy = self.Accuracy(self.model, data_loader=validate_data, device=self.device)
                     self.log.info(f'准确率: {accuracy}%')
+                    
                 self.progress.update(self.task, completed=latest_steps + epoch + 1, total=self.num_epochs,
                                     description=f"[cyan]训练中,训练了:{latest_steps + epoch + 1}/{self.num_epochs}")
-                self.log.info(f'轮数 {latest_steps + epoch + 1}, 损失率: {running_loss / len(self.data_loader.dataset)}') # type: ignore
+                
+                end_time = time.time()
+                elapsed_time = end_time - start_time
+                hours = int(elapsed_time // 3600)
+                minutes = int((elapsed_time % 3600) // 60)
+                
+                self.log.info(f'轮数 {latest_steps + epoch + 1}, 损失率: {running_loss / len(self.data_loader.dataset)}, 花费时间: {hours:02d}:{minutes:02d}') #type:ignore
+                
                 # 保存
                 if (epoch + 1) % conf.log_interval == 0:
                     trainer.save_model(model_path, latest_steps + epoch + 1)
