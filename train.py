@@ -187,9 +187,9 @@ class Trainer:
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--name',type=str,default=None,help="实验项目名字",required=True)
+    parser.add_argument('-n',type=str,default=None,help="实验项目名字",required=True)
     args = parser.parse_args()
-    name = args.name
+    name = args.n
     conf = Config(name,"train")
     #上次最后模型路径
     if conf.train_countinue:
