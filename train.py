@@ -139,8 +139,9 @@ class Trainer:
                 elapsed_time = end_time - start_time
                 hours = int(elapsed_time // 3600)
                 minutes = int((elapsed_time % 3600) // 60)
+                seconds = int(elapsed_time % 60)
                 
-                self.log.info(f'轮数 {latest_steps + epoch + 1}, 损失率: {running_loss / len(self.data_loader.dataset)}, 花费时间: {hours:02d}:{minutes:02d}') #type:ignore
+                self.log.info(f'轮数 {latest_steps + epoch + 1}, 损失率: {running_loss / len(self.data_loader.dataset)}, 花费时间: {hours:02d}:{minutes:02d}:{seconds:02d}') #type:ignore
                 
                 # 保存
                 if (epoch + 1) % conf.log_interval == 0:
