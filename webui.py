@@ -79,7 +79,7 @@ def p0_mkdir(name):
          with open(os.path.join(path,"config.yml"), 'w', encoding='utf-8') as f:
             yaml.dump(cfg_yml, f)
          refresh_project_list()
-         return project_name.update(choices=list_project,value=name),f'Success. 请将数据集按标签放入制定名称文件夹中，并将其写入model/{name}/character.txt中。然后进行下一步操作。'
+         return project_name.update(choices=list_project,value=name),f'Success. 请将数据集按标签放入制定名称文件夹中，并将其写入character.py中。然后进行下一步操作。'
        except Exception as error:
          return error
     else:
@@ -144,7 +144,7 @@ def c2_infer(proj_name,model_name,sr,scr_path,js_opt):
         return '请选择模型！'
         
     path=f'./model/{proj_name}'
-    command = f'{py_dir} inf.py -m {path}/{model_name} -sr {sr} -scr {scr_path} -opt {js_opt}'
+    command = f'{py_dir} infrence.py -m {path}/{model_name} -sr {int(sr)} -scr {scr_path} -opt {js_opt}'
     print(command+'\n\n')
     subprocess.Popen(['start', 'cmd', '/k', command],cwd=current_directory,shell=True)
     return '新的命令行窗口已经打开，请关注输出信息。关闭窗口结束推理服务。'

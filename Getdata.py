@@ -65,11 +65,12 @@ class AudioDataset(Dataset):
             if self.first_shape == -1:
                 self.first_shape = mfccs.shape[1]
             
-            if mfccs.shape[1] != self.first_shape:
-                try:
-                   mfccs = np.pad(mfccs, ((0, 0), (0, self.first_shape - mfccs.shape[1])), mode='constant')
-                except Exception as e:
-                    self.log.warning(f"(数据维度警告)填充零值错误: {mfccs.shape}")
+            # 调整MFCC特征的维度
+            if mfccs.shape[1] < self.first_shape:
+                mfccs = np.pad(
+                    mfccs, ((0, 0), (0, self.first_shape - mfccs.shape[1])), mode='constant')
+            elif mfccs.shape[1] > self.first_shape:
+                mfccs = mfccs[:, :self.first_shape]  # 截取前first_shape列
 
             if self.transform:
                 waveform = self.transform(waveform)  # 应用额外的转换操作
