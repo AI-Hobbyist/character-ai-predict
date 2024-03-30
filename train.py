@@ -9,7 +9,7 @@ import global_exc_handler
 from rich.progress import Progress
 import torch,os
 from Decorators import retry
-import json,time
+import json,time,argparse
 
 # 定义CNN游戏角色语音分类模型
 class CNNclassifyModel(nn.Module):
@@ -184,18 +184,22 @@ class Trainer:
         except KeyboardInterrupt:
             self.log.info("用户手动停止训练的继续")
 
+
 if __name__ == '__main__':
-    name = "全角色"
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--name',type=str,default=None,help="实验项目名字",required=True)
+    args = parser.parse_args()
+    name = args.name
     conf = Config(name,"train")
     #上次最后模型路径
     if conf.train_countinue:
-       with open(f"./model/{name}/info.json", "r") as rf:
-           js_data = json.load(rf)
-       latest_steps = js_data.get("model").get("model_steps")
+        with open(f"./model/{name}/info.json", "r") as rf:
+            js_data = json.load(rf)
+        latest_steps = js_data.get("model").get("model_steps")
     else:
-       latest_steps = 0
+        latest_steps = 0
     model_path = f"./model/{name}/CharacterClassify_{latest_steps}.pth"
-    
+
 
     getpath = GetDataPath()
     wav_list ,label_list = getpath.GetPath("train",name)
@@ -205,8 +209,8 @@ if __name__ == '__main__':
     model = CNNclassifyModel(num_classes=conf.num_classes)
     trainer = Trainer(model=model,data_loader=data_loader,batch_size=conf.batch_size,learning_rate=conf.learning_rate,num_epochs=conf.num_epochs,device=conf.device)
     validate_data = DataLoader(AudioDataset(val_wav,val_label,conf.sr,3,transform=transform),batch_size=conf.batch_size,shuffle=False)
-    
-    
+
+
     if conf.train_countinue:
         trainer.train_continue_with_model(model_path)
     else:
