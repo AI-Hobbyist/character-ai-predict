@@ -60,7 +60,7 @@ class Trainer:
         # 损失函数和优化器不要忘了加
         self.criterion = nn.CrossEntropyLoss()
         self.optimizer = optim.Adam(self.model.parameters(), lr=self.learning_rate)
-        self.log = LogManager().GetLogger("TrainThread")
+        self.log = LogManager().GetLogger("Train")
         self.progress = Progress()
         self.task = self.progress.add_task("[cyan]训练中...", total=self.num_epochs)
 

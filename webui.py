@@ -6,6 +6,10 @@ import subprocess
 import json
 import yaml
 import argparse
+import global_exc_handler
+from Log4p.core import *
+
+logger = LogManager().GetLogger('webui')
 
 #########################################################
 py_dir=r"python" # SET PYTHON PATH HERE!
@@ -61,6 +65,9 @@ def p0_mkdir(name):
     if name!='':
        try:
          wav_path='datasets'
+         if not os.path.exists(wav_path):
+             logger.warning('datasets文件夹不存在，正在创建...')
+             os.mkdir(wav_path)
          wav_path=os.path.join('datasets',name)
          os.mkdir(wav_path)#datasets/xxx/
          os.mkdir(os.path.join(wav_path,'train'))
@@ -81,6 +88,7 @@ def p0_mkdir(name):
          refresh_project_list()
          return project_name.update(choices=list_project,value=name),f'Success. 请将数据集按标签放入制定名称文件夹中，并将其写入character.py中。然后进行下一步操作。'
        except Exception as error:
+         logger.error(f"发生了一个错误:{error}")
          return error
     else:
        return '请输入名称！'
@@ -296,6 +304,6 @@ if __name__ == "__main__":
         
         c2_btn_refresh.click(refresh_project_list,[],[project_name,project_name2,c2_textbox_output_text])
                    	
-         
+logger.info("正在启动webui")
 webbrowser.open(f"http://127.0.0.1:{args.server_port}")
 app.launch(share=False,server_port=args.server_port)

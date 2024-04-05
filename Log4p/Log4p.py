@@ -3,7 +3,7 @@ from Log4p.plugins_for_core import *
 class LogManager:
     def __init__(self) -> None:
         self.public_formatter = logging.Formatter(
-            fmt='[%(asctime)s][%(name)s/%(levelname)s][%(funcName)s]:%(message)s',
+            fmt='[%(asctime)s][%(threadName)s/%(levelname)s][%(name)s][%(funcName)s]:%(message)s',
             datefmt='%H:%M:%S'
         )
 
@@ -37,7 +37,7 @@ class LogManager:
             console_handler = logging.StreamHandler()
             console_handler.setLevel(logging.DEBUG)
             console_formatter = colorlog.ColoredFormatter(
-                fmt='%(log_color)s [%(asctime)s][%(name)s/%(levelname)s][%(funcName)s]:%(message)s %(reset)s',
+                fmt='%(log_color)s [%(asctime)s][%(threadName)s/%(levelname)s][%(name)s][%(funcName)s]:%(message)s %(reset)s',
                 datefmt='%H:%M:%S',
                 log_colors=log_color_config
             )

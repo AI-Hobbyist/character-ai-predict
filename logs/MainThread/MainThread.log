@@ -85,3 +85,19 @@ failure because of: RuntimeError: stack expects each tensor to be equal size, bu
   at collate in (G:\python3.12.2\Lib\site-packages\torch\utils\data\_utils\collate.py:121)
   at collate_tensor_fn in (G:\python3.12.2\Lib\site-packages\torch\utils\data\_utils\collate.py:174)
 
+[11:13:31][MainThread/CRITICAL][exception_hook]:发生异常:
+An Fatal Error has occurred: RuntimeError: 训练时发生错误
+Traceback (most recent call last):
+  at <module> in (f:\python_play\Genshin-analsts\train.py:211)
+  at train_continue_with_model in (f:\python_play\Genshin-analsts\train.py:180)
+  at train in (f:\python_play\Genshin-analsts\train.py:153)
+failure because of: RuntimeError: stack expects each tensor to be equal size, but got [13, 195] at entry 0 and [13, 259] at entry 2
+  at train in (f:\python_play\Genshin-analsts\train.py:101)
+  at __next__ in (G:\python3.12.2\Lib\site-packages\torch\utils\data\dataloader.py:631)
+  at _next_data in (G:\python3.12.2\Lib\site-packages\torch\utils\data\dataloader.py:675)
+  at fetch in (G:\python3.12.2\Lib\site-packages\torch\utils\data\_utils\fetch.py:54)
+  at default_collate in (G:\python3.12.2\Lib\site-packages\torch\utils\data\_utils\collate.py:277)
+  at collate in (G:\python3.12.2\Lib\site-packages\torch\utils\data\_utils\collate.py:144)
+  at collate in (G:\python3.12.2\Lib\site-packages\torch\utils\data\_utils\collate.py:121)
+  at collate_tensor_fn in (G:\python3.12.2\Lib\site-packages\torch\utils\data\_utils\collate.py:174)
+

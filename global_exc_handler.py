@@ -2,7 +2,7 @@ import traceback
 import sys
 from Log4p.core import *
 
-Mainlogger = LogManager().GetLogger("MainThread")
+Mainlogger = LogManager().GetLogger("Exception")
 
 def format_stack_trace(exctype, value, tb, nested=False):
     tb_list = traceback.extract_tb(tb)

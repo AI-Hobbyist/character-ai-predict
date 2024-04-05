@@ -891,3 +891,51 @@
 [10:48:49][TrainThread/INFO][train]:轮数 411, 损失率: 0.05325406349223593, 花费时间: 00:00
 [10:49:19][TrainThread/INFO][train]:轮数 412, 损失率: 0.05309027226074882, 花费时间: 00:00
 [10:49:40][TrainThread/INFO][train]:训练被中断
+[10:58:21][TrainThread/INFO][train_continue_with_model]:加载已有模型并继续训练，上次模型步数400
+[10:58:21][TrainThread/INFO][train]:开始训练
+[10:59:43][TrainThread/INFO][train]:轮数 401, 损失率: 0.05438554908918298, 花费时间: 00:01:21
+[11:00:19][TrainThread/INFO][train]:轮数 402, 损失率: 0.054645988993022754, 花费时间: 00:00:36
+[11:00:51][TrainThread/INFO][train]:轮数 403, 损失率: 0.054756966621979423, 花费时间: 00:00:32
+[11:01:24][TrainThread/INFO][train]:轮数 404, 损失率: 0.0550191052581953, 花费时间: 00:00:32
+[11:01:57][TrainThread/INFO][train]:轮数 405, 损失率: 0.053960515623507295, 花费时间: 00:00:32
+[11:02:29][TrainThread/INFO][train]:轮数 406, 损失率: 0.05481187675310218, 花费时间: 00:00:31
+[11:03:01][TrainThread/INFO][train]:轮数 407, 损失率: 0.05428428416666777, 花费时间: 00:00:32
+[11:03:51][TrainThread/INFO][train]:轮数 408, 损失率: 0.05478695164556089, 花费时间: 00:00:49
+[11:04:24][TrainThread/INFO][train]:轮数 409, 损失率: 0.054975542555684626, 花费时间: 00:00:33
+[11:04:57][TrainThread/INFO][train]:验证中...
+[11:04:59][TrainThread/INFO][train]:准确率: 100.0%
+[11:04:59][TrainThread/INFO][train]:轮数 410, 损失率: 0.053659781424895574, 花费时间: 00:00:34
+[11:05:34][TrainThread/INFO][train]:轮数 411, 损失率: 0.05440095170684483, 花费时间: 00:00:34
+[11:06:07][TrainThread/INFO][train]:轮数 412, 损失率: 0.05334001986876778, 花费时间: 00:00:33
+[11:06:41][TrainThread/INFO][train]:轮数 413, 损失率: 0.053460693359375, 花费时间: 00:00:33
+[11:07:13][TrainThread/INFO][train]:轮数 414, 损失率: 0.053127885383108385, 花费时间: 00:00:32
+[11:07:46][TrainThread/INFO][train]:轮数 415, 损失率: 0.05356133321057195, 花费时间: 00:00:33
+[11:08:19][TrainThread/INFO][train]:轮数 416, 损失率: 0.052557874503343004, 花费时间: 00:00:33
+[11:08:53][TrainThread/INFO][train]:轮数 417, 损失率: 0.0536100112873575, 花费时间: 00:00:33
+[11:09:26][TrainThread/INFO][train]:轮数 418, 损失率: 0.05321704356566719, 花费时间: 00:00:33
+[11:09:59][TrainThread/INFO][train]:轮数 419, 损失率: 0.05347011659456336, 花费时间: 00:00:32
+[11:10:30][TrainThread/INFO][train]:验证中...
+[11:10:31][TrainThread/INFO][train]:准确率: 100.0%
+[11:10:31][TrainThread/INFO][train]:轮数 420, 损失率: 0.052862082097841344, 花费时间: 00:00:32
+[11:11:04][TrainThread/INFO][train]:轮数 421, 损失率: 0.05291376165721728, 花费时间: 00:00:32
+[11:11:36][TrainThread/INFO][train]:轮数 422, 损失率: 0.05223418098428975, 花费时间: 00:00:32
+[11:12:09][TrainThread/INFO][train]:轮数 423, 损失率: 0.05215547395789105, 花费时间: 00:00:32
+[11:12:41][TrainThread/INFO][train]:轮数 424, 损失率: 0.053110130196032314, 花费时间: 00:00:31
+[11:13:14][TrainThread/INFO][train_continue_with_model]:加载已有模型并继续训练，上次模型步数400
+[11:13:14][TrainThread/INFO][train]:开始训练
+[11:13:31][TrainThread/ERROR][train]:训练的时候发生错误
+[11:13:31][TrainThread/ERROR][train_continue_with_model]:加载模型并继续训练时发生错误
+[11:14:40][TrainThread/INFO][train_continue_with_model]:加载已有模型并继续训练，上次模型步数400
+[11:14:40][TrainThread/INFO][train]:开始训练
+[11:15:40][TrainThread/INFO][train]:轮数 401, 损失率: 0.05436217914456907, 花费时间: 00:01:00
+[11:16:13][TrainThread/INFO][train]:轮数 402, 损失率: 0.054488730430603025, 花费时间: 00:00:00
+[11:16:44][TrainThread/INFO][train]:轮数 403, 损失率: 0.05373014341229978, 花费时间: 00:00:00
+[11:17:16][TrainThread/INFO][train]:轮数 404, 损失率: 0.0538404151149418, 花费时间: 00:00:00
+[11:17:47][TrainThread/INFO][train]:轮数 405, 损失率: 0.05467987527018008, 花费时间: 00:00:00
+[11:17:56][TrainThread/INFO][train]:训练被中断
+[11:36:08][TrainThread/INFO][train_continue_with_model]:加载已有模型并继续训练，上次模型步数400
+[11:36:09][TrainThread/INFO][train]:开始训练
+[11:36:14][TrainThread/INFO][train]:训练被中断
+[12:17:09][TrainThread/INFO][train_continue_with_model]:加载已有模型并继续训练，上次模型步数400
+[12:17:09][TrainThread/INFO][train]:开始训练
+[12:17:11][TrainThread/INFO][train]:训练被中断
