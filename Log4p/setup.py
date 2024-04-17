@@ -4,7 +4,7 @@ setup(
     name='Log4p',
     version='1.0.0',
     packages=find_packages(),
-    author='芙宁娜',
+    author='花火',
     author_email='3072252442@qq.com',
     description='A logging library for Python',
     long_description=open('Readme.md','r',encoding='utf-8').read(),

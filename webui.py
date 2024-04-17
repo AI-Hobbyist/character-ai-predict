@@ -2,6 +2,7 @@ import shutil
 import gradio as gr
 import os
 import webbrowser
+import pyfiglet
 import subprocess
 import json
 import yaml
@@ -303,7 +304,9 @@ if __name__ == "__main__":
         )
         
         c2_btn_refresh.click(refresh_project_list,[],[project_name,project_name2,c2_textbox_output_text])
-                   	
+print("====================================")
+pyfiglet.print_figlet("Webui","slant","cyan")
+print("======== coding by: 欸嘿 ===========")
 logger.info("正在启动webui")
 webbrowser.open(f"http://127.0.0.1:{args.server_port}")
 app.launch(share=False,server_port=args.server_port)

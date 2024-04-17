@@ -11,3 +11,4 @@ rich==13.7.1
 setuptools==69.2.0
 torch==2.2.1+cu118
 websockets==11.0.3
+pyfiglet

@@ -3,6 +3,7 @@ from config import Config
 from Getdata import AudioDataset,AudioAugmentation
 from GetPath import GetDataPath
 import torch.nn as nn
+import pyfiglet
 from torch.utils.data import DataLoader
 import torch.optim as optim
 import global_exc_handler
@@ -186,6 +187,8 @@ class Trainer:
 
 
 if __name__ == '__main__':
+    pyfiglet.print_figlet("CNN-Train","slant","cyan")
+    print("========================")
     parser = argparse.ArgumentParser()
     parser.add_argument('-n',type=str,default=None,help="实验项目名字",required=True)
     args = parser.parse_args()

@@ -11,7 +11,7 @@ def retry(max_attempts=3, delay=1, backoff=2):
     '''
     def decorator(func):
         @wraps(func)
-        def wrapper(*args, **kwargs):
+        def wrapper(exception,*args, **kwargs):
             attempt = 1
             while attempt <= max_attempts:
                 try:
